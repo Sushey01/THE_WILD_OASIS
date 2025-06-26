@@ -1,16 +1,14 @@
-import supabase from "./supabase"
+import supabase from "./supabase";
 
-export async function getCabins(){
-    
-let { data: cabins, error } = await supabase
-  .from('cabins')
-  .select('*') //selecting all of them
+export async function getCabins() {
+  let { data: cabins, error } = await supabase
+    .from('cabins')
+    .select('*'); // selecting all cabins
 
-  if (error){
+  if (error) {
     console.error(error);
-    throw new Error("Cabins could not be loaded")
+    throw new Error("Cabins could not be loaded");
   }
 
-  return data;
-
+  return cabins; // return cabins, not data
 }

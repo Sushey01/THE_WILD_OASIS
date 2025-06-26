@@ -2,8 +2,8 @@ import React from 'react'
 
 const HeroSection = () => {
   return (
-    <div className={styles}>
-      
+    <div className={styles.hero}>
+      <p>Hello</p>
     </div>
   )
 }
