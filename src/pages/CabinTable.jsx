@@ -1,13 +1,24 @@
 import React from "react";
-import { useQuery } from "@tanstack/react-query";
-import { getCabins } from "../services/apiCabins";
+
+
+import {
+  useQuery,
+  useMutation,
+  useQueryClient,
+} from "@tanstack/react-query";
+import {
+  getCabins,
+  deleteCabin,
+} from "../services/apiCabins";
+import SimpleDeleteButton from "./SimpleDeleteButton";
 
 const supabaseUrl =
   "https://wvrlzurpmqwjezgxjvjc.supabase.co/storage/v1/object/public/";
 
-
-
 function CabinTable() {
+  const queryClient = useQueryClient();
+
+  // Fetch all cabins
   const {
     data: cabins,
     isLoading,
@@ -15,6 +26,13 @@ function CabinTable() {
   } = useQuery({
     queryKey: ["cabins"],
     queryFn: getCabins,
+  });
+
+  // Handle deletion
+  const { isloading: isDeleting, mutate } = useMutation(deleteCabin, {
+    onSuccess: () => {
+      queryClient.invalidateQueries(["cabins"]);
+    },
   });
 
   if (isLoading) return <p>Loading cabins...</p>;
@@ -26,9 +44,9 @@ function CabinTable() {
       <ul style={{ listStyle: "none", padding: 0 }}>
         {cabins.map((cabin) => {
           const imageUrl = supabaseUrl + "cabin-images/" + cabin.image;
-          console.log(cabin)
+
           return (
-            <li key={cabin.id}>
+            <li key={cabin.id} style={{ marginBottom: "2rem" }}>
               <img
                 src={imageUrl}
                 alt={cabin.name}
@@ -39,11 +57,14 @@ function CabinTable() {
               <p>Max Capacity: {cabin.maxCapacity}</p>
               <p>Price: ${cabin.regularPrice}</p>
               <p>Discount: {cabin.discount}%</p>
+          <SimpleDeleteButton cabinId={cabin.id} />
+
             </li>
           );
-          
         })}
       </ul>
+
+      {/* .div$*4  */}
     </div>
   );
 }
