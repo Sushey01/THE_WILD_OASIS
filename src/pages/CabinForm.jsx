@@ -25,7 +25,7 @@ function CabinForm() {
   });
 
   const onSubmit = (data) => {
-    mutate({ ...data, image: data.image.at(0) });
+    mutate({ ...data, image: data.image[0] });
   };
 
   const onError = (errors) => {
@@ -72,7 +72,6 @@ function CabinForm() {
       <input
         type="number"
         placeholder="Discount"
-        defaultValue={0}
         {...register("discount", {
           required: "Discount is required",
           validate: (value) =>
