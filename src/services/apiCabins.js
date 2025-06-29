@@ -16,17 +16,25 @@ export async function getCabins() {
 
 
 export async function deleteCabin(id) {
-  
-const { data, error } = await supabase
-  .from('cabins')
-  .delete()
-  .eq('id', id)
+  console.log("Trying to delete cabin with id:", id);
 
+  const { data, error } = await supabase
+    .from("cabins")
+    .delete()
+    .eq("id", id)
+    .select();
+    
+
+  console.log("Supabase delete response:", { data, error });
 
   if (error) {
-    console.error(error);
-    throw new Error("Cabin could not be deleted")
+    console.error("Supabase delete error:", error.message);
+    throw new Error("Cabin could not be deleted");
   }
-  return data;
 
+  if (!data || data.length === 0) {
+    throw new Error("No cabin was deleted — check if ID is correct or permissions");
+  }
+
+  return data;
 }

@@ -6,14 +6,14 @@ function SimpleDeleteButton({ cabinId }) {
   const [error, setError] = useState(null);
   const queryClient = useQueryClient();
 
-  const { mutate, isPending } = useMutation({
+  const { mutate, isLoading } = useMutation({
     mutationFn: deleteCabin,
     onSuccess: () => {
       queryClient.invalidateQueries(["cabins"]); // 👈 refresh cabin list!
       alert("Cabin deleted!");
     },
     onError: (err) => {
-      setError(err.message);
+      setError(err.response?.data?.message || "An error occurred");
     },
   });
 
@@ -25,8 +25,8 @@ function SimpleDeleteButton({ cabinId }) {
 
   return (
     <>
-      <button onClick={handleClick} disabled={isPending}>
-        {isPending ? "Deleting..." : "Delete"}
+      <button onClick={handleClick} disabled={isLoading}>
+        {isLoading ? "Deleting..." : "Delete"}
       </button>
       {error && <p style={{ color: "red" }}>Error: {error}</p>}
     </>
