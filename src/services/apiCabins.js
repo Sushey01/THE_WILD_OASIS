@@ -1,6 +1,6 @@
 
-import supabase from "./supabase";
-import { supabaseUrl } from './supabase';
+
+import supabase, { supabaseUrl } from './supabase';
 
 
 
@@ -34,20 +34,20 @@ const { data, error } = await supabase
   .insert([{...newCabin, image: imagePath }])
   .select()
 
-
+  
   if (error){
     console.error(error);
     throw new Error("Cabin could not be created");
   }
-
-
+  
+  
   // 2. Upload Image
   const {error: storageError} = await supabase.storage
   .from("cabin-images")
   .upload(imageName, newCabin.image);
-
-
-
+  
+  
+  
   // 3. Delete the cabin if there was an error uploading image
   if(storageError){
     await supabase.from("cabins").delete().eq("id", data[0].id);
@@ -72,7 +72,7 @@ export async function deleteCabin(id) {
     .eq("id", id)
     .select();
     
-
+    
   console.log("Supabase delete response:", { data, error });
 
   if (error) {
@@ -86,3 +86,5 @@ export async function deleteCabin(id) {
 
   return data;
 }
+
+    

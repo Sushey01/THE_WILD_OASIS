@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   useQuery,
   useMutation,
@@ -6,13 +6,14 @@ import {
 } from "@tanstack/react-query";
 import { getCabins, deleteCabin } from "../services/apiCabins";
 import SimpleDeleteButton from "./SimpleDeleteButton";
-import { toast } from "react-hot-toast"; // ✅ Added this line
+import { toast } from "react-hot-toast"; 
 
 const supabaseUrl =
   "https://wvrlzurpmqwjezgxjvjc.supabase.co/storage/v1/object/public/";
 
 function CabinTable() {
   const queryClient = useQueryClient();
+  const [showForm, setShowForm] = useState(false)
 
   const {
     data: cabins,
@@ -61,16 +62,20 @@ function CabinTable() {
                   ? `${cabin.discount}%`
                   : "—"}
               </p>
+              <div>
+                  <button onClick={()=>setShowForm((show)=>!show)}>Edit</button>
 
               <SimpleDeleteButton
                 cabinId={cabin.id}
                 onDelete={() => mutate(cabin.id)}
                 isDeleting={isDeleting}
-              />
+                />
+                </div>
             </li>
           );
         })}
       </ul>
+      {showForm && <CabinForm cabinToEdit={cabin}/>} 
     </div>
   );
 }
