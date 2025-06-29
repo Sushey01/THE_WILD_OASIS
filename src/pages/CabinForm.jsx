@@ -5,8 +5,7 @@ import { toast } from "react-hot-toast";
 import { createCabin } from "../services/apiCabins";
 
 function CabinForm() {
-
-    const {
+  const {
     register,
     handleSubmit,
     reset,
@@ -14,24 +13,19 @@ function CabinForm() {
     formState: { errors },
   } = useForm();
 
-
   const queryClient = useQueryClient();
-  const {mutate, isLoading} = useMutation({
-    mutationFn:createCabin,
-    onSuccess:()=>{
+  const { mutate, isLoading } = useMutation({
+    mutationFn: createCabin,
+    onSuccess: () => {
       toast.success("New Cabin successfully created");
-      queryClient.invalidateQueries({queryKey:["cabins"]})
-      reset()
+      queryClient.invalidateQueries({ queryKey: ["cabins"] });
+      reset();
     },
-    onError:(err) => toast.error(err.message),
-  })
-
-  
-
-
+    onError: (err) => toast.error(err.message),
+  });
 
   const onSubmit = (data) => {
-   mutate(data)
+    mutate({ ...data, image: data.image.at(0) });
   };
 
   const onError = (errors) => {
@@ -50,10 +44,7 @@ function CabinForm() {
       />
       {errors?.name?.message && <Error>{errors.name.message}</Error>}
 
-
-
-
-       <input
+      <input
         type="number"
         placeholder="Max Capacity"
         required="this field is required"
@@ -65,58 +56,54 @@ function CabinForm() {
       {errors.maxCapacity && (
         <small style={errorStyle}>{errors.maxCapacity.message}</small>
       )}
-      
 
-      
       <input
         type="number"
         placeholder="Price"
         {...register("regularPrice", {
           required: "Price is required",
-          min: { value: 1, message: "Price must be at least 1"},
+          min: { value: 1, message: "Price must be at least 1" },
         })}
       />
-       {errors.regularPrice && (
+      {errors.regularPrice && (
         <small style={errorStyle}>{errors.regularPrice.message}</small>
       )}
 
-      
+      <input
+        type="number"
+        placeholder="Discount"
+        defaultValue={0}
+        {...register("discount", {
+          required: "Discount is required",
+          validate: (value) =>
+            value <= getValues("regularPrice") ||
+            "Discount should be less than regular price",
+        })}
+      />
 
-        <input
-  type="number"
-  placeholder="Discount"
-  defaultValue={0}
-  {...register("discount", {
-    required: "Discount is required",
-    validate: (value) =>
-      value <= getValues("regularPrice") ||
-      "Discount should be less than regular price",
-  })}
-/>
+      {errors.discount && (
+        <small style={errorStyle}>{errors.discount.message}</small>
+      )}
 
-{errors.discount && (
-  <small style={errorStyle}>{errors.discount.message}</small>
-)}
+      <textarea
+        placeholder="Description"
+        {...register("description", {
+          required: "Description is required",
+        })}
+      />
+      {errors.description && (
+        <small style={errorStyle}>{errors.description.message}</small>
+      )}
 
-      
-
-
-      
-      
-       <textarea
-  placeholder="Description"
-  {...register("description", {
-    required: "Description is required",
-  })}
-/>
-{errors.description && (
-  <small style={errorStyle}>{errors.description.message}</small>
-)}
-
-     
-      
-   
-      
+      <input
+        id="Image"
+        accept="image/*"
+        type="file"
+        {...register("image", {
+          required: "This field is required",
+        })}
+      />
+      {errors.image && <small style={errorStyle}>{errors.image.message}</small>}
 
       <button type="submit">Submit</button>
     </form>

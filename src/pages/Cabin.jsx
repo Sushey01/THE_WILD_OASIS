@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 import CabinTable from './CabinTable';
-import CabinForm from './CabinForm'; // ⬅️ Import it
+import CabinForm from './CabinForm'; // 
+import supabase from '../services/supabase';
 
 const Cabin = () => {
+
   const [showForm, setShowForm] = useState(false);
+  console.log(supabase)
 
   return (
     <>

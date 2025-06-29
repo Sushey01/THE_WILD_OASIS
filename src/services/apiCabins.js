@@ -15,16 +15,25 @@ export async function getCabins() {
 
 
 export async function createCabin(newCabin){
-  
+
+  // https://wvrlzurpmqwjezgxjvjc.supabase.co/storage/v1/object/public/cabin-images//cabin-001.jpg
+
+  const imageName = `${Math.random()}-${newCabin.image.name}`.replaceAll("/", "") 
+  const imagePath = `${supabaseUrl}/storage/v1/object/public/cabin-images/${imageName}`
+
+  // 1. Create Cabin
 const { data, error } = await supabase
   .from('cabins')
-  .insert([newCabin])
+  .insert([...newCabin, image: imagePath ])
   .select()
 
   if (error){
     console.error(error);
     throw new Error("Cabin could not be created");
   }
+
+
+  // 2. Upload Image
 
   return data;
 
