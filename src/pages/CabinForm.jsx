@@ -10,6 +10,7 @@ function CabinForm() {
     register,
     handleSubmit,
     reset,
+    getValues,
     formState: { errors },
   } = useForm();
 
@@ -47,7 +48,7 @@ function CabinForm() {
         placeholder="Cabin name"
         {...register("name", { required: "Cabin name is required" })}
       />
-      {errors.name && <small style={errorStyle}>{errors.name.message}</small>}
+      {errors?.name?.message && <Error>{errors.name.message}</Error>}
 
 
 
@@ -55,6 +56,7 @@ function CabinForm() {
        <input
         type="number"
         placeholder="Max Capacity"
+        required="this field is required"
         {...register("maxCapacity", {
           required: "Max capacity is required",
           min: { value: 1, message: "Must be at least 1" },
@@ -71,7 +73,7 @@ function CabinForm() {
         placeholder="Price"
         {...register("regularPrice", {
           required: "Price is required",
-          min: { value: 1, message: "Price must be at least 1" },
+          min: { value: 1, message: "Price must be at least 1"},
         })}
       />
        {errors.regularPrice && (
@@ -80,14 +82,21 @@ function CabinForm() {
 
       
 
-          <input
-        type="number"
-        placeholder="Discount"
-        {...register("discount", {
-          required: "Discount is required",
-          min: { value: 1, message: "Discount must be at least 0" },
-        })}
-      />
+        <input
+  type="number"
+  placeholder="Discount"
+  defaultValue={0}
+  {...register("discount", {
+    required: "Discount is required",
+    validate: (value) =>
+      value <= getValues("regularPrice") ||
+      "Discount should be less than regular price",
+  })}
+/>
+
+{errors.discount && (
+  <small style={errorStyle}>{errors.discount.message}</small>
+)}
 
       
 
