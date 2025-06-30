@@ -3,19 +3,25 @@ import { toast } from "react-hot-toast";
 import React from "react";
 import { useForm } from "react-hook-form";
 import { createCabin } from "../services/apiCabins";
+import { createEditCabin } from "../services/apiCabins";
 
-function CabinForm() {
+function CabinForm({cabinToEdit}) {
+  const {id: editId, ...editValues}= cabinToEdit;
+  const isEditSession = Boolean(editId);
+
   const {
     register,
     handleSubmit,
     reset,
     getValues,
     formState: { errors },
-  } = useForm();
+  } = useForm({
+    defaultValues: isEditSession ? editValues:{},
+  });
 
   const queryClient = useQueryClient();
   const { mutate, isLoading } = useMutation({
-    mutationFn: createCabin,
+    mutationFn: createEditCabin,
     onSuccess: () => {
       toast.success("New Cabin successfully created");
       queryClient.invalidateQueries({ queryKey: ["cabins"] });
@@ -99,12 +105,17 @@ function CabinForm() {
         accept="image/*"
         type="file"
         {...register("image", {
-          required: "This field is required",
+          required: isEditSession ? false : "This field is required",
         })}
       />
       {errors.image && <small style={errorStyle}>{errors.image.message}</small>}
 
-      <button type="submit">Submit</button>
+      {/* <button type="submit">Submit</button> */}
+
+      <div>
+        <button type="reset">Cancel</button>
+        <button disabled={isCreating}>{isEditSession?'Edit Cabin': 'Create new Cabin'}</button>
+      </div>
     </form>
   );
 }
