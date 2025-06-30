@@ -46,7 +46,7 @@ function CabinFormV1({cabinToEdit}) {
       <input
         type="text"
         placeholder="Cabin name"
-        {...register("name", { required: "Cabin name is required" })}
+        {...register("name", { required: "Cabin name is required" })} //register: Connects input fields to the form state
       />
       {errors?.name?.message && <Error>{errors.name.message}</Error>}
 
