@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import CabinTable from './CabinTable';
-import CabinForm from './CabinForm'; // 
+import CabinForm from "./CabinForm" 
 import supabase from '../services/supabase';
+import CabinFormV1 from './CabinFormV1';
+
 
 const Cabin = () => {
 

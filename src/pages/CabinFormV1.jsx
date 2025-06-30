@@ -3,6 +3,8 @@ import { toast } from "react-hot-toast";
 import React from "react";
 import { useForm } from "react-hook-form";
 import { createCabin } from "../services/apiCabins";
+import { createEditCabin } from "../services/apiCabins";
+
 
 function CabinFormV1({cabinToEdit}) {
 
@@ -21,7 +23,7 @@ function CabinFormV1({cabinToEdit}) {
 
   const queryClient = useQueryClient();
   const { mutate, isLoading } = useMutation({
-    mutationFn: createCabin,
+    mutationFn: createEditCabin,
     onSuccess: () => {
       toast.success("New Cabin successfully created");
       queryClient.invalidateQueries({ queryKey: ["cabins"] });
