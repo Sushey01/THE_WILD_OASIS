@@ -6,7 +6,6 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { Toaster } from "react-hot-toast";
 import Cabin from "./pages/Cabin";
 import HeroSection from "./pages/HeroSection";
-import CabinFormV1 from "./pages/CabinFormV1";
 
 const queryClient = new QueryClient({
   defaultOptions: {

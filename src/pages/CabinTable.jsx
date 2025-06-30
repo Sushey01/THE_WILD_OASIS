@@ -7,7 +7,7 @@ import {
 import { getCabins, deleteCabin } from "../services/apiCabins";
 import SimpleDeleteButton from "./SimpleDeleteButton";
 import { toast } from "react-hot-toast"; 
-import CabinFormV1 from "./CabinFormV1";
+import CabinForm from "./CabinForm";
 
 const supabaseUrl =
   "https://wvrlzurpmqwjezgxjvjc.supabase.co/storage/v1/object/public/";
@@ -78,7 +78,7 @@ function CabinTable() {
               </div>
 
               {isEditing && (
-                <CabinFormV1
+                <CabinForm
                   cabinToEdit={cabin}
                   onClose={() => setEditingCabinId(null)}
                 />

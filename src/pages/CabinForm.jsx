@@ -14,7 +14,6 @@ function CabinForm({ cabinToEdit = {}, onClose }) {
     handleSubmit,
     reset,
     getValues,
-    setValue,
     formState: { errors },
   } = useForm({
     defaultValues: {
@@ -27,11 +26,11 @@ function CabinForm({ cabinToEdit = {}, onClose }) {
     },
   });
 
-  useEffect(() => {
-    if (isEditSession) {
-      reset({ ...editValues, image: "" }); // do not preload image
-    }
-  }, [editValues, isEditSession, reset]);
+  // useEffect(() => {
+  //   if (isEditSession) {
+  //     reset({ ...editValues, image: "" }); // do not preload image
+  //   }
+  // }, [editValues, isEditSession, reset]);
 
   const queryClient = useQueryClient();
 
