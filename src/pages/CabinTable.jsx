@@ -7,13 +7,14 @@ import {
 import { getCabins, deleteCabin } from "../services/apiCabins";
 import SimpleDeleteButton from "./SimpleDeleteButton";
 import { toast } from "react-hot-toast"; 
+import CabinFormV1 from "./CabinFormV1";
 
 const supabaseUrl =
   "https://wvrlzurpmqwjezgxjvjc.supabase.co/storage/v1/object/public/";
 
 function CabinTable() {
   const queryClient = useQueryClient();
-  const [showForm, setShowForm] = useState(false)
+  const [editingCabinId, setEditingCabinId] = useState(null);
 
   const {
     data: cabins,
@@ -27,7 +28,7 @@ function CabinTable() {
   const { isLoading: isDeleting, mutate } = useMutation({
     mutationFn: deleteCabin,
     onSuccess: () => {
-      toast.success("Cabin successfully deleted"); // ✅ Corrected message
+      toast.success("Cabin successfully deleted");
       queryClient.invalidateQueries({ queryKey: ["cabins"] });
     },
     onError: (error) => toast.error(error.message),
@@ -44,6 +45,8 @@ function CabinTable() {
           const imageUrl = cabin.image?.startsWith("http")
             ? cabin.image
             : `${supabaseUrl}cabin-images/${cabin.image}`;
+
+          const isEditing = editingCabinId === cabin.id;
 
           return (
             <li key={cabin.id} style={{ marginBottom: "2rem" }}>
@@ -63,19 +66,27 @@ function CabinTable() {
                   : "—"}
               </p>
               <div>
-                  <button onClick={()=>setShowForm((show)=>!show)}>Edit</button>
+                <button onClick={() => setEditingCabinId(isEditing ? null : cabin.id)}>
+                  {isEditing ? "Close Edit" : "Edit"}
+                </button>
 
-              <SimpleDeleteButton
-                cabinId={cabin.id}
-                onDelete={() => mutate(cabin.id)}
-                isDeleting={isDeleting}
+                <SimpleDeleteButton
+                  cabinId={cabin.id}
+                  isDeleting={isDeleting}
+                  onDelete={() => mutate(cabin.id)}
                 />
-                </div>
+              </div>
+
+              {isEditing && (
+                <CabinFormV1
+                  cabinToEdit={cabin}
+                  onClose={() => setEditingCabinId(null)}
+                />
+              )}
             </li>
           );
         })}
       </ul>
-      {showForm && <CabinForm cabinToEdit={cabin}/>} 
     </div>
   );
 }

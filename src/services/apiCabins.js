@@ -63,6 +63,24 @@ const { data, error } = await supabase
 }
 
 
+export async function updateCabin(id, updatedCabin){
+  
+const { data, error } = await supabase
+  .from('cabins')
+  .update({ other_column: 'otherValue' })
+  .eq('id', id)
+  .select()
+
+  if (error) {
+    console.error(error);
+    throw new Error("Cabin could not be updated")
+  }
+
+  return data;
+
+}
+
+
 export async function deleteCabin(id) {
   console.log("Trying to delete cabin with id:", id);
 

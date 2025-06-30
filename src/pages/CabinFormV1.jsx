@@ -4,7 +4,7 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { createCabin } from "../services/apiCabins";
 
-function CabinForm({cabinToEdit}) {
+function CabinFormV1({cabinToEdit}) {
 
     const {id:editId, ...editValues} =cabinToEdit;
     const isEditSession = Boolean(editId)
@@ -111,12 +111,15 @@ function CabinForm({cabinToEdit}) {
       {errors.image && <small style={errorStyle}>{errors.image.message}</small>}
 
       {/* <button type="submit">Submit</button> */}
-      <div>
-        <Button variation="secondary" type="reset">
-            Cancel
-        </Button>
-        <Button disabled={isCreating}>{isEditSession?'Edit Cabin':'Create a new Cabin'}</Button>
-      </div>
+     <div>
+  <button type="button" onClick={() => { reset(); onClose?.(); }}>
+    Cancel
+  </button>
+<button type="submit" disabled={isLoading}>
+  {isEditSession ? "Update Cabin" : "Create Cabin"}
+</button>
+</div>
+
     </form>
   );
 }
@@ -134,4 +137,4 @@ const errorStyle = {
   fontSize: "0.85rem",
 };
 
-export default CabinForm;
+export default CabinFormV1;

@@ -9,7 +9,7 @@ function SimpleDeleteButton({ cabinId }) {
   const { mutate, isLoading } = useMutation({
     mutationFn: deleteCabin,
     onSuccess: () => {
-      queryClient.invalidateQueries(["cabins"]); // 👈 refresh cabin list!
+      queryClient.invalidateQueries(["cabins"]);
       alert("Cabin deleted!");
     },
     onError: (err) => {
