@@ -47,6 +47,7 @@ function CabinTable() {
   });
 
  function handleDuplicate(cabin) {
+  console.log(cabin,'cqbisncd');
     const duplicatedCabin = {
       name: `${cabin.name} (Copy)`,
       description: cabin.description,
@@ -54,6 +55,7 @@ function CabinTable() {
       regularPrice: cabin.regularPrice,
       discount: cabin.discount,
       image: cabin.image,
+      duplicate: true
 
 
       // const {name, description, maxCapacity, regularPrice, discount, image} = cabin,
