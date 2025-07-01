@@ -17,11 +17,11 @@ function CabinForm({ cabinToEdit = {}, onClose }) {
     formState: { errors },
   } = useForm({
     defaultValues: {
-      name: "",
-      maxCapacity: "",
-      regularPrice: "",
-      discount: 0,
-      description: "",
+      name: "Cozy Mountains",
+      maxCapacity: "6",
+      regularPrice: "150",
+      discount: 20,
+      description: "Lets have fun",
       ...editValues,
     },
   });
@@ -103,7 +103,7 @@ function CabinForm({ cabinToEdit = {}, onClose }) {
       {errors.discount && <p style={errorStyle}>{errors.discount.message}</p>}
 
       <textarea
-        placeholder="Description"
+        placeholder="Description" 
         {...register("description", { required: "Description is required" })}
       />
       {errors.description && <p style={errorStyle}>{errors.description.message}</p>}

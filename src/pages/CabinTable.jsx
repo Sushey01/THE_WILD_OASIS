@@ -47,15 +47,15 @@ function CabinTable() {
   });
 
  function handleDuplicate(cabin) {
-  console.log(cabin,'cqbisncd');
+
     const duplicatedCabin = {
       name: `${cabin.name} (Copy)`,
       description: cabin.description,
       maxCapacity: cabin.maxCapacity,
       regularPrice: cabin.regularPrice,
       discount: cabin.discount,
-      image: cabin.image,
-      duplicate: true
+      image: cabin.image, // existing image URL
+      duplicate: true // Flag to indicate this is a duplicate
 
 
       // const {name, description, maxCapacity, regularPrice, discount, image} = cabin,
@@ -66,9 +66,13 @@ function CabinTable() {
       // image,
       // description,
     };
-    console.log(duplicatedCabin)
 
-    duplicateCabin(duplicatedCabin);
+    duplicateCabin(duplicatedCabin, {
+      onSuccess:(newCabin)=>{
+        toast.success("Cabin duplicated");
+        queryClient.setQueryData(["Cabins"], (old)=>[...old, newCabin])
+      }
+    })
   }
 
   if (isLoading) return <p>Loading cabins...</p>;
@@ -88,6 +92,7 @@ function CabinTable() {
           return (
             <li key={cabin.id} style={{ marginBottom: "2rem" }}>
               <img
+              loading="lazy"
                 src={imageUrl}
                 alt={cabin.name}
                 style={{ width: "300px", borderRadius: "10px" }}
