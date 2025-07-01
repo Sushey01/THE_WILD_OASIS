@@ -7,7 +7,6 @@ import { Toaster } from "react-hot-toast";
 import Cabin from "./pages/Cabin";
 import HeroSection from "./pages/HeroSection";
 import Settings from "./pages/Settings";
-import UpdateSettingsForm from "./settings/UpdateSettingsForm";
 
 const queryClient = new QueryClient({
   defaultOptions: {

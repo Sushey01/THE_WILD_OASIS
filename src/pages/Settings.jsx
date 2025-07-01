@@ -1,6 +1,5 @@
 import React from 'react'
 import UpdateSettingsForm from '../settings/UpdateSettingsForm'
-
 const Settings = () => {
   return (
     <div>
