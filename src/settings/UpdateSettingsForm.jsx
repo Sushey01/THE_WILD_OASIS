@@ -1,8 +1,10 @@
 import React from 'react'
 import { useSettings } from './useSettings'
+import { useUpdateSetting } from './UseEditSettings';
 
 const UpdateSettingsForm = () => {
     const {isLoading, settings:{minBookingLength, maxBookingLength, maxGuestPerson, breakfastPrice,}={}} = useSettings();
+    
 
   return (
     <form>
