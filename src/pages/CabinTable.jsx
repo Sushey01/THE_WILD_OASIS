@@ -4,10 +4,11 @@ import {
   useMutation,
   useQueryClient,
 } from "@tanstack/react-query";
-import { getCabins, deleteCabin } from "../services/apiCabins";
+import { getCabins, deleteCabin, createCabin } from "../services/apiCabins";
 import SimpleDeleteButton from "./SimpleDeleteButton";
-import { toast } from "react-hot-toast"; 
+import { toast } from "react-hot-toast";
 import CabinForm from "./CabinForm";
+import { HiPencil, HiSquare2Stack } from "react-icons/hi2";
 
 const supabaseUrl =
   "https://wvrlzurpmqwjezgxjvjc.supabase.co/storage/v1/object/public/";
@@ -25,7 +26,8 @@ function CabinTable() {
     queryFn: getCabins,
   });
 
-  const { isLoading: isDeleting, mutate } = useMutation({
+  // Delete mutation
+  const { isLoading: isDeleting, mutate: deleteCabinMutate } = useMutation({
     mutationFn: deleteCabin,
     onSuccess: () => {
       toast.success("Cabin successfully deleted");
@@ -33,6 +35,39 @@ function CabinTable() {
     },
     onError: (error) => toast.error(error.message),
   });
+
+  // Duplicate mutation
+  const { mutate: duplicateCabin } = useMutation({
+    mutationFn: createCabin,
+    onSuccess: () => {
+      toast.success("Cabin duplicated successfully");
+      queryClient.invalidateQueries({ queryKey: ["cabins"] });
+    },
+    onError: (error) => toast.error("Failed to duplicate: " + error.message),
+  });
+
+ function handleDuplicate(cabin) {
+    const duplicatedCabin = {
+      name: `${cabin.name} (Copy)`,
+      description: cabin.description,
+      maxCapacity: cabin.maxCapacity,
+      regularPrice: cabin.regularPrice,
+      discount: cabin.discount,
+      image: cabin.image,
+
+
+      // const {name, description, maxCapacity, regularPrice, discount, image} = cabin,
+      // name: `Copy of ${name}`,
+      // maxCapacity,
+      // regularPrice,
+      // discount,
+      // image,
+      // description,
+    };
+    console.log(duplicatedCabin)
+
+    duplicateCabin(duplicatedCabin);
+  }
 
   if (isLoading) return <p>Loading cabins...</p>;
   if (error) return <p>Error loading cabins: {error.message}</p>;
@@ -66,14 +101,20 @@ function CabinTable() {
                   : "—"}
               </p>
               <div>
-                <button onClick={() => setEditingCabinId(isEditing ? null : cabin.id)}>
-                  {isEditing ? "Close Edit" : "Edit"}
+                <button onClick={() => handleDuplicate(cabin)}><HiSquare2Stack/></button>
+
+                <button
+                  onClick={() =>
+                    setEditingCabinId(isEditing ? null : cabin.id)
+                  }
+                >
+                  {isEditing ? "Close Edit" : ""}<HiPencil/>
                 </button>
 
                 <SimpleDeleteButton
                   cabinId={cabin.id}
                   isDeleting={isDeleting}
-                  onDelete={() => mutate(cabin.id)}
+                  onDelete={() => deleteCabinMutate(cabin.id)}
                 />
               </div>
 

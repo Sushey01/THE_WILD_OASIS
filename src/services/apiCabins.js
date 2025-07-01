@@ -44,7 +44,7 @@ export async function createCabin(newCabin) {
   return data;
 }
 
-//  CREATE OR EDIT CABIN
+//  CREATE OR CABIN
 export async function createEditCabin(newCabin, id) {
   // Check if user uploaded a new file or provided an existing image URL
   const isImageFile = newCabin.image instanceof File;

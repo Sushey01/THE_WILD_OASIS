@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { deleteCabin } from "../services/apiCabins";
+import { HiTrash } from "react-icons/hi2";
 
 function SimpleDeleteButton({ cabinId }) {
   const [error, setError] = useState(null);
@@ -26,7 +27,7 @@ function SimpleDeleteButton({ cabinId }) {
   return (
     <>
       <button onClick={handleClick} disabled={isLoading}>
-        {isLoading ? "Deleting..." : "Delete"}
+        {isLoading ? "Deleting..." : ""}<HiTrash/>
       </button>
       {error && <p style={{ color: "red" }}>Error: {error}</p>}
     </>
