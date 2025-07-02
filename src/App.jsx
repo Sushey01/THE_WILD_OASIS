@@ -7,6 +7,8 @@ import { Toaster } from "react-hot-toast";
 import Cabin from "./pages/Cabin";
 import HeroSection from "./pages/HeroSection";
 import Settings from "./pages/Settings";
+import LoginForm from "./pages/LoginForm";
+import Dashboard from "./pages/Dashboard";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -22,8 +24,10 @@ const App = () => {
       <ReactQueryDevtools initialIsOpen={false} />
       {/* <CabinTable /> */}
       {/* <Cabin/> */}
-      <Settings/> 
+      {/* <Settings/>  */}
       {/* <CabinFormV1/> */}
+      {/* <LoginForm/> */}
+      <Dashboard/>
 
       <Toaster
         position="top-center"

@@ -13,12 +13,13 @@ const UpdateSettingsForm = () => {
     } = {},
   } = useSettings();
 
-  const { isLoading: isUpdating, mutate: updateSetting } = useUpdateSetting();
+  const {  isUpdating, updateSetting } = useUpdateSetting();
 
   function handleUpdate(e, field) {
     const { value } = e.target;
     if (!value) return;
-    updateSetting({ [field]: value });
+   updateSetting({ [field]: value });
+
   }
 
   if (isLoading) return <p>Loading settings...</p>;
@@ -29,8 +30,9 @@ const UpdateSettingsForm = () => {
         <input
           type="number"
           id="min-nights"
-          disabled={isUpdating}
+          
           defaultValue={minBookingLength}
+          disabled={isUpdating}
           onBlur={(e) => handleUpdate(e, "minBookingLength")}
         />
       </label>
@@ -39,8 +41,9 @@ const UpdateSettingsForm = () => {
         <input
           type="number"
           id="max-nights"
-          disabled={isUpdating}
+         
           defaultValue={maxBookingLength}
+           disabled={isUpdating}
           onBlur={(e) => handleUpdate(e, "maxBookingLength")}
         />
       </label>
@@ -49,8 +52,7 @@ const UpdateSettingsForm = () => {
         <input
           type="number"
           id="max-guests"
-          disabled={isUpdating}
-          defaultValue={maxGuestPerson}
+          defaultValue={maxGuestPerson} disabled={isUpdating}
           onBlur={(e) => handleUpdate(e, "maxGuestPerson")}
         />
       </label>
@@ -59,8 +61,7 @@ const UpdateSettingsForm = () => {
         <input
           type="number"
           id="break-price"
-          disabled={isUpdating}
-          defaultValue={breakfastPrice}
+          defaultValue={breakfastPrice}  disabled={isUpdating}
           onBlur={(e) => handleUpdate(e, "breakfastPrice")}
         />
       </label>
