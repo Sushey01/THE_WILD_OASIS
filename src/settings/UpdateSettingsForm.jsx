@@ -27,11 +27,7 @@ const UpdateSettingsForm = () => {
   return (
     <form className={styles.settingForm}>
       <div className={styles.settings}>
-        <div className={styles.settings1}>
         <label className={styles.settingInput}> Minimum nights/booking </label>
-        </div>
-        <div className={styles.settings1}>
-
         <input
           type="number"
           id="min-nights"
@@ -39,7 +35,6 @@ const UpdateSettingsForm = () => {
           disabled={isUpdating}
           onBlur={(e) => handleUpdate(e, "minBookingLength")}
           />
-          </div>
 
       </div>
 

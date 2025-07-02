@@ -11,16 +11,12 @@
 
 
 .settings{
-    display: flex;
-    gap: 40px;
+    display: grid;
+    grid-template-columns: repeat( 3, 1fr);
+    /* gap: 40px; */
     align-items: center;
 }
 
-
-.settings1{
-    display: flex;
-    gap: 40px;
-}
 
 
 .settingInput{
