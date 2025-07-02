@@ -23,11 +23,11 @@ const App = () => {
     <QueryClientProvider client={queryClient}>
       <ReactQueryDevtools initialIsOpen={false} />
       {/* <CabinTable /> */}
-      {/* <Cabin/> */}
+      <Cabin/>
       <Settings/> 
       {/* <CabinFormV1/> */}
-      {/* <LoginForm/> */}
-      {/* <Dashboard/> */}
+      <LoginForm/>
+      <Dashboard/>
 
       <Toaster
         position="top-center"
