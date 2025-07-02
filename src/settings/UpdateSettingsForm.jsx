@@ -1,7 +1,7 @@
-import React from 'react';
-import { useSettings } from './useSettings';
-import {useUpdateSetting} from './useUpdateSetting';
-import styles from "./SettingForm.module.css"
+import React from "react";
+import { useSettings } from "./useSettings";
+import { useUpdateSetting } from "./useUpdateSetting";
+import styles from "./SettingForm.module.css";
 
 const UpdateSettingsForm = () => {
   const {
@@ -14,13 +14,12 @@ const UpdateSettingsForm = () => {
     } = {},
   } = useSettings();
 
-  const {  isUpdating, updateSetting } = useUpdateSetting();
+  const { isUpdating, updateSetting } = useUpdateSetting();
 
   function handleUpdate(e, field) {
     const { value } = e.target;
     if (!value) return;
-   updateSetting({ [field]: value });
-
+    updateSetting({ [field]: value });
   }
 
   if (isLoading) return <p>Loading settings...</p>;
@@ -28,8 +27,11 @@ const UpdateSettingsForm = () => {
   return (
     <form className={styles.settingForm}>
       <div className={styles.settings}>
+        <div className={styles.settings1}>
+        <label className={styles.settingInput}> Minimum nights/booking </label>
+        </div>
+        <div className={styles.settings1}>
 
-      <label> Minimum nights/booking </label>
         <input
           type="number"
           id="min-nights"
@@ -39,38 +41,40 @@ const UpdateSettingsForm = () => {
           />
           </div>
 
+      </div>
+
       <div className={styles.settings}>
-      <label>Maximum nights/booking</label>
+        <label className={styles.settingInput}>Maximum nights/booking</label>
         <input
           type="number"
           id="max-nights"
           defaultValue={maxBookingLength}
           disabled={isUpdating}
           onBlur={(e) => handleUpdate(e, "maxBookingLength")}
-          />
-          </div>
+        />
+      </div>
 
-    <div className={styles.settings}>
-
-      <label>Maximum nights/booking</label>
+      <div className={styles.settings}>
+        <label className={styles.settingInput}>Maximum nights/booking</label>
         <input
           type="number"
           id="max-guests"
-          defaultValue={maxGuestPerson} disabled={isUpdating}
+          defaultValue={maxGuestPerson}
+          disabled={isUpdating}
           onBlur={(e) => handleUpdate(e, "maxGuestPerson")}
-          />
-          </div>
-      
-      <div className={styles.settings}>
+        />
+      </div>
 
-      <label>Breakfast price</label>
+      <div className={styles.settings}>
+        <label className={styles.settingInput}>Breakfast price</label>
         <input
           type="number"
           id="break-price"
-          defaultValue={breakfastPrice}  disabled={isUpdating}
+          defaultValue={breakfastPrice}
+          disabled={isUpdating}
           onBlur={(e) => handleUpdate(e, "breakfastPrice")}
-          />
-          </div>
+        />
+      </div>
     </form>
   );
 };

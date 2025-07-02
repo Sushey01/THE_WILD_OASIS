@@ -1,5 +1,32 @@
 .settingForm{
     display: flex;
     flex-direction: column;
-    padding: 20px;
+    width: 100%;
+    height: 100vh;
+    padding: 30px;
+    gap: 30px;
+    background-color: #18212F;
 }
+
+
+
+.settings{
+    display: flex;
+    gap: 40px;
+    align-items: center;
+}
+
+
+.settings1{
+    display: flex;
+    gap: 40px;
+}
+
+
+.settingInput{
+    color: #E5E7EB;
+    font-size: 14px;
+    font-family: Poppins, sans-serif;
+}
+
+

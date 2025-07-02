@@ -24,10 +24,10 @@ const App = () => {
       <ReactQueryDevtools initialIsOpen={false} />
       {/* <CabinTable /> */}
       {/* <Cabin/> */}
-      {/* <Settings/>  */}
+      <Settings/> 
       {/* <CabinFormV1/> */}
       {/* <LoginForm/> */}
-      <Dashboard/>
+      {/* <Dashboard/> */}
 
       <Toaster
         position="top-center"
