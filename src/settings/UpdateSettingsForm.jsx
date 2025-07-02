@@ -1,6 +1,7 @@
 import React from 'react';
 import { useSettings } from './useSettings';
 import {useUpdateSetting} from './useUpdateSetting';
+import styles from "./SettingForm.module.css"
 
 const UpdateSettingsForm = () => {
   const {
@@ -25,46 +26,51 @@ const UpdateSettingsForm = () => {
   if (isLoading) return <p>Loading settings...</p>;
 
   return (
-    <form>
-      <label>
+    <form className={styles.settingForm}>
+      <div className={styles.settings}>
+
+      <label> Minimum nights/booking </label>
         <input
           type="number"
           id="min-nights"
-          
           defaultValue={minBookingLength}
           disabled={isUpdating}
           onBlur={(e) => handleUpdate(e, "minBookingLength")}
-        />
-      </label>
+          />
+          </div>
 
-      <label>
+      <div className={styles.settings}>
+      <label>Maximum nights/booking</label>
         <input
           type="number"
           id="max-nights"
-         
           defaultValue={maxBookingLength}
-           disabled={isUpdating}
+          disabled={isUpdating}
           onBlur={(e) => handleUpdate(e, "maxBookingLength")}
-        />
-      </label>
+          />
+          </div>
 
-      <label>
+    <div className={styles.settings}>
+
+      <label>Maximum nights/booking</label>
         <input
           type="number"
           id="max-guests"
           defaultValue={maxGuestPerson} disabled={isUpdating}
           onBlur={(e) => handleUpdate(e, "maxGuestPerson")}
-        />
-      </label>
+          />
+          </div>
+      
+      <div className={styles.settings}>
 
-      <label>
+      <label>Breakfast price</label>
         <input
           type="number"
           id="break-price"
           defaultValue={breakfastPrice}  disabled={isUpdating}
           onBlur={(e) => handleUpdate(e, "breakfastPrice")}
-        />
-      </label>
+          />
+          </div>
     </form>
   );
 };
