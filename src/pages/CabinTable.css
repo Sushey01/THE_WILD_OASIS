@@ -2,18 +2,41 @@
     display: flex;
     flex-direction: column;
     padding: 40px;
+    background-color: #1f2937;
+}
+
+
+.cabin-header{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    justify-items: center;
+    border: 1px solid #67707d;
+    color: #d1d5db;
+    padding: 20px;
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
 }
 
 
 .cabin-table ul{
+    border: 1px solid #67707d;
     display: flex;
     flex-direction: column;
+    border-radius: 7px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
 }
 
 .cabin-table li{
+    color: #d1d5db;
     display: grid;
+    justify-items: center;
     grid-template-columns: repeat(7, 1fr);
-    gap: 10px;
+    width: 100%;
+    justify-content: space-evenly;
     align-items: center;
+    padding-top: 10px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #363d46;
 }
 

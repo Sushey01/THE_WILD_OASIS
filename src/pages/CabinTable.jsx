@@ -81,6 +81,12 @@ function CabinTable() {
 
   return (
     <div className="cabin-table">
+      <div className="cabin-header">
+        <p>CABIN</p>
+        <p>CAPACITY</p>
+        <p>PRICE</p>
+        <p>DISCOUNT</p>
+      </div>
       <ul style={{ listStyle: "none", padding: 0 }}>
         {cabins.map((cabin) => {
           const imageUrl = cabin.image?.startsWith("http")
