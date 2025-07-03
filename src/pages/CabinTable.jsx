@@ -20,6 +20,8 @@ function CabinTable() {
   const queryClient = useQueryClient();
   const [editingCabinId, setEditingCabinId] = useState(null);
 
+  if(!cabins.length) return <p>No data found</p>
+
   const {
     data: cabins,
     isLoading,

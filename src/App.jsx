@@ -9,7 +9,9 @@ import HeroSection from "./pages/HeroSection";
 import Settings from "./pages/Settings";
 import LoginForm from "./pages/LoginForm";
 import Dashboard from "./pages/Dashboard";
-import BookingDetails from "./pages/BookingDetails";
+import BookingDetails from "./bookings/BookingTable";
+import BookingTable from "./bookings/BookingTable";
+import Bookings from "./bookings/Bookings";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -23,13 +25,13 @@ const App = () => {
   return (
     <QueryClientProvider client={queryClient}>
       <ReactQueryDevtools initialIsOpen={false} />
-      {/* <CabinTable /> */}
-      {/* <Cabin/>
-      <Settings/>  */}
-      {/* <CabinFormV1/> */}
-      {/* <LoginForm/>
+      {/* <CabinTable />
+      <Cabin/>
+      <Settings/> 
+      <LoginForm/>
       <Dashboard/> */}
-      <BookingDetails/>
+      <BookingTable/>
+      <Bookings/>
 
       <Toaster
         position="top-center"

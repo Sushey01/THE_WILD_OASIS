@@ -14,7 +14,9 @@
     font-size: 30px;
     font-weight: 550;
     color: #E5E7EB;
+    font-family: Poppins, sans-serif;
 }
+
 
 .filters{
     display: flex;
@@ -55,6 +57,9 @@
 .secondary{
     color: #E5E7EB;
     background-color: #18212f;
+    font-size: 14px;
+     font-family: Poppins, sans-serif;
+     font-weight: 550;
 }
 
 
@@ -78,6 +83,9 @@
     color: #E5E7EB;
     background-color: #18212f;
     border: none;
+    font-size: 14px;
+    font-family: Poppins, sans-serif;
+    font-weight: 550;
 }
 
 
