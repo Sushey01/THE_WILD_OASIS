@@ -24,4 +24,61 @@
 }
 
 
+.filter1{
+    border: 1px solid #1f2937;
+    padding: 5px;
+    display: flex;
+    gap: 5px;
+    border-radius: 5px;
+    background-color: #18212f;
+}
+
+
+
+.primary{
+    color:#EEF2FF ;
+    font-size: 14px;
+    border-radius: 5px;
+    font-family: Poppins, sans-serif;
+    font-weight: 550;
+    background-color:#4f46e5;
+}
+
+:disabled{cursor: not-allowed;}
+
+
+.filter1 button{
+        padding: 8px 12px;
+    border: none;
+}
+
+.secondary{
+    color: #E5E7EB;
+    background-color: #18212f;
+}
+
+
+.secondary:hover{
+    background-color:#4f46e5;
+    border-radius: 5px;
+}
+
+.filter2{
+    border: 1px solid #1f2937;
+    padding: 5px;
+    display: flex;
+    gap: 5px;
+    border-radius: 5px;
+    background-color: #18212f;
+}
+
+
+.filter2 select{
+    padding: 8px 12px;
+    color: #E5E7EB;
+    background-color: #18212f;
+    border: none;
+}
+
+
 

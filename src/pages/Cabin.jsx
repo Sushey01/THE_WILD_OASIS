@@ -14,9 +14,10 @@ const Cabin = () => {
 
         <div className={styles.filters}>
           <div className={styles.filter1}>
-            <button>All</button>
-            <button>No discount</button>
-            <button>With discount</button>
+            <button className={styles.primary} disabled>All</button>
+            <button className={styles.secondary}>No discount</button>
+            <button className={styles.secondary}>With discount</button>
+            
           </div>
           <div className={styles.filter2}>
             <select>
