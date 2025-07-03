@@ -25,18 +25,33 @@
     border-radius: 7px;
     border-top-left-radius: 0;
     border-top-right-radius: 0;
+    margin: 0px;
 }
 
 .cabin-table li{
+    
     color: #d1d5db;
     display: grid;
     justify-items: center;
     grid-template-columns: repeat(7, 1fr);
-    width: 100%;
-    justify-content: space-evenly;
     align-items: center;
-    padding-top: 10px;
+    padding-top: 5px;
     padding-bottom: 5px;
     border-bottom: 1px solid #363d46;
+}
+
+.cabin-button{
+    padding-top: 15px;
+}
+
+.cabin-button button{
+    padding: 14px 20px;
+    border-radius: 5px;
+    border: none;
+    background-color: #4f43e5;
+    color: #EEF2FF;
+    font-weight: 550;
+    font-size: 14px;
+    font-family: Poppins, sans-serif;
 }
 

@@ -15,6 +15,8 @@ const supabaseUrl =
   "https://wvrlzurpmqwjezgxjvjc.supabase.co/storage/v1/object/public/";
 
 function CabinTable() {
+    const [showForm, setShowForm] = useState(false);
+  // console.log(supabase);
   const queryClient = useQueryClient();
   const [editingCabinId, setEditingCabinId] = useState(null);
 
@@ -96,7 +98,7 @@ function CabinTable() {
           const isEditing = editingCabinId === cabin.id;
 
           return (
-            <li key={cabin.id} style={{ marginBottom: "2rem" }}>
+            <li key={cabin.id}>
               <img
               loading="lazy"
                 src={imageUrl}
@@ -140,7 +142,16 @@ function CabinTable() {
             </li>
           );
         })}
+        
       </ul>
+      <div className="cabin-button">
+
+            <button onClick={() => setShowForm((show) => !show)}>
+        {showForm ? "Close Form" : "Add New Cabin"}
+      </button>
+      {showForm && <CabinForm />} {/* ⬅️ Show the form when showForm is true */}
+      </div>
+      
     </div>
   );
 }
