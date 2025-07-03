@@ -1,0 +1,19 @@
+.cabin-table{
+    display: flex;
+    flex-direction: column;
+    padding: 40px;
+}
+
+
+.cabin-table ul{
+    display: flex;
+    flex-direction: column;
+}
+
+.cabin-table li{
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 10px;
+    align-items: center;
+}
+

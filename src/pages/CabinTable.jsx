@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./CabinTable.css"
 import {
   useQuery,
   useMutation,
@@ -79,8 +80,7 @@ function CabinTable() {
   if (error) return <p>Error loading cabins: {error.message}</p>;
 
   return (
-    <div>
-      <h2>All Cabins</h2>
+    <div className="cabin-table">
       <ul style={{ listStyle: "none", padding: 0 }}>
         {cabins.map((cabin) => {
           const imageUrl = cabin.image?.startsWith("http")
@@ -95,7 +95,7 @@ function CabinTable() {
               loading="lazy"
                 src={imageUrl}
                 alt={cabin.name}
-                style={{ width: "300px", borderRadius: "10px" }}
+                style={{ width: "100px" }}
               />
               <h3>{cabin.name}</h3>
               <p>{cabin.description}</p>

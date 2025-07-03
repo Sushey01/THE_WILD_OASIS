@@ -1,0 +1,27 @@
+
+
+.cabinHead{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    width:100%;
+    gap: 40px;
+    justify-content: space-between;
+    padding: 40px;
+    background-color: #111827;
+}
+
+.title{
+    font-size: 30px;
+    font-weight: 550;
+    color: #E5E7EB;
+}
+
+.filters{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 20px;
+}
+
+
+
