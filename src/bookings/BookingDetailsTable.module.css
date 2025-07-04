@@ -1,8 +1,22 @@
+
+/* .mainContainer{
+    padding: 20px;
+} */
+
+.container{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+
+
 .rowContainer {
   background-color: #1f2937;
   border-radius: 12px;
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
   padding: 24px;
-  margin: 20px 0;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
   font-family: 'Segoe UI', sans-serif;
 }
@@ -57,7 +71,7 @@
     border: 1px solid ;
     justify-content: space-between;
     background-color: #854d0e;
-    padding: 10px;
+    padding: 20px;
 }
 
 .priceDetail p{
@@ -99,4 +113,39 @@
   color: #999;
   justify-items: flex-end;
 }
+
+
+.footer{
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+
+.footer button{
+    padding: 10px;
+     color: #fff;
+     font-weight: 500;
+     font-family: Poppins, sans-serif;
+     border: none;
+     border-radius: 5px;
+}
+
+
+.button1{
+    background-color: purple;
+    
+}
+
+.button2{
+    background-color: maroon;
+}
+
+.button3{
+    background-color: #212121;
+}
+
+
+
 

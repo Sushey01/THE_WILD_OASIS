@@ -1,8 +1,13 @@
 import React from 'react'
-import styles from "./BookingDetailsTable"
+import styles from "./BookingDetailsTable.module.css"
+import BookingDetailsRow from './BookingDetailsRow';
 
 const BookingDetailsTable = () => {
   return (
+    <div className={styles.mainContainer}>
+    <BookingDetailsRow/>
+    <div className={styles.container}>
+      
      <div className={styles.rowContainer}>
       {/* Guest Info */}
       <div className={styles.guestHeader}>
@@ -37,6 +42,13 @@ const BookingDetailsTable = () => {
       <div className={styles.bookedTime}>
         <p>Booked Tue, May 13 2025, 4:53 PM</p>
       </div>
+    </div>
+    <div className={styles.footer}>
+        <button className={styles.button1}>check in</button>
+        <button className={styles.button2}>Delete booking</button>
+        <button className={styles.button3}>Back</button>
+    </div>
+    </div>
     </div>
   );
 };

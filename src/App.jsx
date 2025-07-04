@@ -13,6 +13,7 @@ import BookingDetails from "./bookings/BookingTable";
 import BookingTable from "./bookings/BookingTable";
 import Bookings from "./bookings/Bookings";
 import CheckinBooking from "./bookings/CheckinBooking";
+import BookingDetailsTable from "./bookings/BookingDetailsTable";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -33,6 +34,7 @@ const App = () => {
       <Dashboard/>   */}
       {/* <Bookings/> */}
       <CheckinBooking/>
+      {/* <BookingDetailsTable/> */}
       
 
       <Toaster

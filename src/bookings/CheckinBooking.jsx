@@ -9,8 +9,10 @@ const CheckinBooking = () => {
   return (
     <>
       <div className={styles.checkin}>
-        <BookingDetailsRow/>
+        <div className={styles.components}>
+        {/* <BookingDetailsRow/> */}
         <BookingDetailsTable/>
+        </div>
 
         <div className={styles.checkbox1}>
           <input type="checkbox" />
