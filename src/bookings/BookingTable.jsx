@@ -70,7 +70,6 @@ const BookingTable = () => {
                   })}
                 </td>
                 <td className={styles.actions}>
-                  <button className={styles.menuButton}>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="18"
@@ -86,7 +85,6 @@ const BookingTable = () => {
                       <circle cx="12" cy="12" r="1" />
                       <circle cx="12" cy="19" r="1" />
                     </svg>
-                  </button>
                 </td>
               </tr>
             );

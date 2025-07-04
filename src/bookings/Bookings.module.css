@@ -96,8 +96,45 @@
 .table{
     width: 100%;
     display: flex;
+    flex-direction: column;
+    border: 1px solid #374151;
+    border-radius: 7px;
+    /* align-items: center; */
+    /* gap: 50px; */
+}
+
+
+.footer{
+    display: flex;
+    justify-content: space-between;
     align-items: center;
-    gap: 50px;
+    padding:0 15px;
+}
+
+
+.totalPage{
+    color: #E5E7EB;
+    font-size: 15px;
+    font-family: Poppins, sans-serif;
+    font-weight: 500;
+}
+
+.buttons{
+    display: flex;
+    gap: 10px;
+}
+
+.button1,.button2{
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    color: #E5E7EB;
+    background-color: #111827;
+    border: none;
+    font-size: 14px;
+    font-family: Poppins, sans-serif;
+    font-weight: 500;
+    padding: 10px;
 }
 
 

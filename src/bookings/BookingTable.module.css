@@ -1,5 +1,6 @@
 .wrapper {
   width: 100%;
+  /* height: 100vh; */
   margin: 0;
   padding: 0;
   overflow-x: auto; /* keep horizontal scroll if needed on small screens */
@@ -10,23 +11,36 @@
   border-collapse: collapse; /* remove gaps between cells */
   min-width: 700px;
   text-align: left;
+  /* border: 1px solid #374151; */
 }
 
 .header th {
-  background-color: #1f2937;
+  background-color: #111827;
   color: #d1d5db;
   font-size: 14px;
   font-weight: 600;
   padding: 16px;
-  border-bottom: none; /* remove bottom border */
+  border-top-left-radius: 7px;
+  border-top-right-radius: 7px;
+  font-family: Poppins, sans-serif;
+  border-bottom: 1px solid #374151; /* remove bottom border */
 }
 
 .table td {
   background-color: #1f2937;
+  color: #E5E7EB;
   padding: 16px;
   border-top: none; /* remove top border */
   font-size: 14px;
   vertical-align: top;
+  font-family: Poppins, sans-serif;
+  border-bottom: 1px solid #374151;
+}
+
+
+.table td strong {
+  font-size: 14px;
+  color: #E5E7EB;
 }
 
 .table td small {
