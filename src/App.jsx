@@ -32,9 +32,9 @@ const App = () => {
       <Settings/> 
       <LoginForm/>
       <Dashboard/>   */}
-      {/* <Bookings/> */}
-      <CheckinBooking/>
-      {/* <BookingDetailsTable/> */}
+      <Bookings/>
+      {/* <CheckinBooking/>
+      <BookingDetailsTable/> */}
       
 
       <Toaster

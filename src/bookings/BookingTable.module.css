@@ -1,3 +1,82 @@
-.details{
-    color: #fff;
+.wrapper {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: auto; /* keep horizontal scroll if needed on small screens */
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse; /* remove gaps between cells */
+  min-width: 700px;
+  text-align: left;
+}
+
+.header th {
+  background-color: #1f2937;
+  color: #d1d5db;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 16px;
+  border-bottom: none; /* remove bottom border */
+}
+
+.table td {
+  background-color: #1f2937;
+  padding: 16px;
+  border-top: none; /* remove top border */
+  font-size: 14px;
+  vertical-align: top;
+}
+
+.table td small {
+  font-size: 12px;
+  color: #9ca3af;
+}
+
+/* Status badges */
+.blue {
+  background-color: #2563eb;
+  color: #e0f2fe;
+  font-weight: 500;
+  font-size: 12px;
+  padding: 4px 10px;
+  border-radius: 12px;
+  display: inline-block;
+  text-transform: capitalize;
+}
+
+.green {
+  background-color: #10b981;
+  color: #e0f2fe;
+  font-weight: 500;
+  font-size: 12px;
+  padding: 4px 10px;
+  border-radius: 12px;
+  display: inline-block;
+  text-transform: capitalize;
+}
+
+.silver {
+  background-color: #6b7280;
+  color: #f9fafb;
+  font-weight: 500;
+  font-size: 12px;
+  padding: 4px 10px;
+  border-radius: 12px;
+  display: inline-block;
+  text-transform: capitalize;
+}
+
+/* Optional: Hover effect for rows */
+.table tr:hover td {
+  background-color: #374151;
+  transition: background-color 0.3s ease;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .wrapper {
+    padding: 20px; /* adjust padding for smaller screens */
+  }
 }

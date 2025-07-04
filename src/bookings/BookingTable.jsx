@@ -16,12 +16,12 @@ const BookingTable = () => {
   if (!bookings || bookings.length === 0)
     return <p>No data to show at the moment</p>;
 
-  const validBookings = bookings.filter(  // keeps the booking only if booking object exists
-    (b) => b && b.guests && b.cabins //b is the temporary element of array for instance
-  ); //true or false
+  const validBookings = bookings.filter(
+    (b) => b && b.guests && b.cabins
+  );
 
   return (
-    <form className={styles.details}>
+    <div className={styles.wrapper}>
       <table className={styles.table}>
         <thead>
           <tr className={styles.header}>
@@ -30,6 +30,7 @@ const BookingTable = () => {
             <th>DATES</th>
             <th>STATUS</th>
             <th>AMOUNT</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
@@ -46,30 +47,53 @@ const BookingTable = () => {
             } = booking;
 
             return (
-              <tr key={id || index}>
+              <tr key={id || index} className={styles.row}>
                 <td>{cabinName}</td>
                 <td>
-                  {fullName}
+                  <strong>{fullName}</strong>
                   <br />
                   <small>{email}</small>
                 </td>
                 <td>
-                  {startDate} - {endDate}
+                  <strong>{startDate} — {endDate}</strong>
                   <br />
-                  <small>{numNights} nights</small>
+                  <small>{numNights} night stay</small>
                 </td>
                 <td>
-                  <span className={styles[statusToTagName[status]]}>
-                    {status}
+                  <span className={`${styles.status} ${styles[statusToTagName[status]]}`}>
+                    {status.toUpperCase()}
                   </span>
                 </td>
-                <td>${totalPrice}</td>
+                <td className={styles.amount}>
+                  ${totalPrice.toLocaleString(undefined, {
+                    minimumFractionDigits: 2,
+                  })}
+                </td>
+                <td className={styles.actions}>
+                  <button className={styles.menuButton}>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="18"
+                      height="18"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <circle cx="12" cy="5" r="1" />
+                      <circle cx="12" cy="12" r="1" />
+                      <circle cx="12" cy="19" r="1" />
+                    </svg>
+                  </button>
+                </td>
               </tr>
             );
           })}
         </tbody>
       </table>
-    </form>
+    </div>
   );
 };
 

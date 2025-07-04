@@ -7,6 +7,8 @@ const Bookings = () => {
   return (
     <>
     <div className={styles.container}>
+      <div className={styles.head}>
+
           <h2 className={styles.title}>All bookings</h2>
     
           <div className={styles.filters}>
@@ -26,10 +28,14 @@ const Bookings = () => {
                 <option>Sort by amount (low first)</option>
               </select>
             </div>
+      </div>
           </div>
+          <div className={styles.table}>
+
           <BookingTable/>
           </div>
-<BookingDetailsTable/>
+          </div>
+{/* <BookingDetailsTable/> */}
           
     </>
   )
