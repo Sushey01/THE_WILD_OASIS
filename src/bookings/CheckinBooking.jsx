@@ -2,12 +2,15 @@ import React from "react";
 import styles from "./CheckinBooking.module.css";
 import BookingDetailsTable from "./BookingDetailsTable";
 import BookingDetails from "./BookingDetails";
+import BookingDetailsRow from "./BookingDetailsRow";
+
 
 const CheckinBooking = () => {
   return (
     <>
       <div className={styles.checkin}>
-        <BookingDetails />
+        <BookingDetailsRow/>
+        <BookingDetailsTable/>
 
         <div className={styles.checkbox1}>
           <input type="checkbox" />

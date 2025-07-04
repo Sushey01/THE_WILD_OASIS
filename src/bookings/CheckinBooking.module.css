@@ -4,11 +4,29 @@
     flex-direction: column;
     gap: 20px;
     padding: 40px;
+    background-color: #111827;
+}
+
+.checkbox1{
+    border: 1px solid #18212f;
+    padding: 20px;
+}
+
+
+.checkbox2{
+    border: 1px solid #18212f;
+    padding: 20px;
+    
 }
 
 .checkbox1, .checkbox2{
     display: flex;
-    gap: 10px;
+    color: #E5E7EB;
+    font-size: 16px;
+    font-family: Poppins, sans-serif;
+    font-weight: 500;
+    border-radius: 5px;
+    gap: 30px;
 }
 
 .buttons{
