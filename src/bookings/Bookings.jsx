@@ -26,9 +26,10 @@ const Bookings = () => {
               </select>
             </div>
           </div>
+          <BookingTable/>
           </div>
 
-          {/* <BookingTable/> */}
+          
     </>
   )
 }

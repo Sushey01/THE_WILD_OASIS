@@ -25,12 +25,11 @@ const App = () => {
   return (
     <QueryClientProvider client={queryClient}>
       <ReactQueryDevtools initialIsOpen={false} />
-      {/* <CabinTable />
-      <Cabin/>
+
+      {/* <Cabin/>
       <Settings/> 
       <LoginForm/>
-      <Dashboard/> */}
-      <BookingTable/>
+      <Dashboard/>   */}
       <Bookings/>
 
       <Toaster

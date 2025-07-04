@@ -16,9 +16,9 @@ const BookingTable = () => {
   if (!bookings || bookings.length === 0)
     return <p>No data to show at the moment</p>;
 
-  const validBookings = bookings.filter(
-    (b) => b && b.guests && b.cabins
-  );
+  const validBookings = bookings.filter(  // keeps the booking only if booking object exists
+    (b) => b && b.guests && b.cabins //b is the temporary element of array for instance
+  ); //true or false
 
   return (
     <form className={styles.details}>
