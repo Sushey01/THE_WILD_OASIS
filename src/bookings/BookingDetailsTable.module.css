@@ -1,0 +1,102 @@
+.rowContainer {
+  background-color: #1f2937;
+  border-radius: 12px;
+  padding: 24px;
+  margin: 20px 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.guestHeader {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  margin-bottom: 16px;
+}
+
+.flag {
+  font-weight: bold;
+  color: #555;
+}
+
+.guestName {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-top: 4px;
+  color: #E5E7EB;
+}
+
+.email,
+.nationalId {
+  font-size: 0.95rem;
+  color: #9ca3af;
+  margin-top: 2px;
+}
+
+.observation,
+.extraDetail,
+.priceDetail {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+}
+
+
+
+
+.price1{
+    display: flex;
+    gap: 10px;
+    justify-items: center;
+}
+
+
+.priceDetail{
+    border: 1px solid ;
+    justify-content: space-between;
+    background-color: #854d0e;
+    padding: 10px;
+}
+
+.priceDetail p{
+    font-family: Poppins, sans-serif;
+    font-weight: 500;
+    color: #FEF9C3;
+
+}
+
+.label {
+  font-weight: 600;
+  font-size: 1rem;
+    color: #E5E7EB;
+  margin-bottom: 4px;
+}
+
+.value {
+  font-size: 0.95rem;
+   color: #E5E7EB;
+}
+
+.price {
+  font-size: 1.3rem;
+  font-weight: bold;
+ 
+}
+
+.payment {
+  font-size: 0.95rem;
+  align-self: center;
+  color: #777;
+}
+
+.bookedTime {
+  margin-top: 24px;
+  font-size: 0.9rem;
+  font-style: italic;
+  width: 100%;
+  color: #999;
+  justify-items: flex-end;
+}
+

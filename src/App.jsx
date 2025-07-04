@@ -12,6 +12,7 @@ import Dashboard from "./pages/Dashboard";
 import BookingDetails from "./bookings/BookingTable";
 import BookingTable from "./bookings/BookingTable";
 import Bookings from "./bookings/Bookings";
+import CheckinBooking from "./bookings/CheckinBooking";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -30,7 +31,9 @@ const App = () => {
       <Settings/> 
       <LoginForm/>
       <Dashboard/>   */}
-      <Bookings/>
+      {/* <Bookings/> */}
+      <CheckinBooking/>
+      
 
       <Toaster
         position="top-center"

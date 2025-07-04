@@ -1,6 +1,7 @@
 import React from 'react'
 import styles from "./Bookings.module.css"
 import BookingTable from './BookingTable'
+import BookingDetailsTable from './BookingDetailsTable'
 
 const Bookings = () => {
   return (
@@ -28,7 +29,7 @@ const Bookings = () => {
           </div>
           <BookingTable/>
           </div>
-
+<BookingDetailsTable/>
           
     </>
   )

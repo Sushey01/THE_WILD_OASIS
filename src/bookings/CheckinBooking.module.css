@@ -1,0 +1,42 @@
+
+.checkin{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 40px;
+}
+
+.checkbox1, .checkbox2{
+    display: flex;
+    gap: 10px;
+}
+
+.buttons{
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+}
+
+.checkbutton{
+    padding: 15px;
+    background-color: #4f46e5;
+    color: #E5E7EB;
+    font-family: Poppins, sans-serif;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.back{
+    padding: 15px;
+    background-color: #18212f;
+    color: #D1DBD5;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    font-family: Poppins, sans-serif;
+    font-weight: 500;
+}
+
+
