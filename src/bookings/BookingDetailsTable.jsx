@@ -1,8 +1,14 @@
 import React from 'react'
 import styles from "./BookingDetailsTable.module.css"
 import BookingDetailsRow from './BookingDetailsRow';
+import Bookings from './Bookings';
+import { useNavigate } from "react-router-dom";
+
 
 const BookingDetailsTable = () => {
+  const navigate = useNavigate()
+
+
   return (
     <div className={styles.mainContainer}>
     <BookingDetailsRow/>
@@ -44,9 +50,9 @@ const BookingDetailsTable = () => {
       </div>
     </div>
     <div className={styles.footer}>
-        <button className={styles.button1}>check in</button>
+        <button className={styles.button1} onClick={()=>navigate('/checkin')}>check in</button>
         <button className={styles.button2}>Delete booking</button>
-        <button className={styles.button3}>Back</button>
+        <button className={styles.button3} onClick={()=>navigate('/bookings')}>Back</button>
     </div>
     </div>
     </div>

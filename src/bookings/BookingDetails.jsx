@@ -4,11 +4,16 @@ import BookingDetailsRow from './BookingDetailsRow'
 import BookingDetailsTable from './BookingDetailsTable'
 
 const BookingDetails = () => {
+  const {booking, isLoading} = useBooking()
+
+
+  if (isLoading) return <h1>ERRORRRR</h1>
+
   return (
     <div className={styles.details}>
         <div className={styles.head}>
       <h1 className={styles.title}>
-        Booking 
+        Booking #
       </h1>
       <button>UNCONFIRMED</button>
         </div>

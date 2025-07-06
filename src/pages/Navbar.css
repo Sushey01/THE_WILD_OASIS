@@ -1,0 +1,108 @@
+
+
+.left-section {
+  width: 20%;
+  padding: 20px 0;
+  background-color: #18212f;
+  height: 100vh;
+  position:fixed;
+  z-index: 1;
+}
+*, ::before, ::after {
+  box-sizing: border-box;
+  padding: 0px;
+  margin: 0px;
+  transition: border 0.3s;
+}
+.left-section .nav-list  ul{
+  background-color: #18212f;
+  margin-top: 40px;
+  color: white;
+}
+.left-section .nav-list  ul .navlink{
+  font-size: 1rem ;
+  list-style: none;
+  margin:0px 20px;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-left: 50px;
+  font-family: 'Poppins' sans-serif;
+  font-weight: 500;
+}
+
+.left-section .nav-list  ul .navlink:hover{
+  background-color:#111827;
+  color: white;
+  cursor: pointer;
+}
+
+.navlink{
+  color:white;
+  text-decoration: none;
+} 
+
+.nav-link{
+  text-decoration: none;
+  color: white;
+  /* padding: 10px 15px */
+  display: inline-block;
+  transition: background-color 0.3s ease;
+}
+
+.right-section {
+  background-color:#18212f;
+  position: fixed;
+  width: 100%;
+}
+.user-section {
+  display: flex;
+  justify-content: end;
+  flex-wrap: wrap;
+  align-items:center;
+  padding: 10px 10px;
+  gap: 8px;
+}
+.userButtons {
+  display: flex;
+  gap:15px;
+  align-items: center;
+  color: #4f46e5;
+}
+
+.userButtons:last-child{
+  padding-top: 0px;
+}
+
+
+
+@media(max-width:640px){
+.logo-section .img{
+  max-width: 50px;
+}
+
+
+.left-section{
+  width: 25%;
+  display: grid;
+  height: auto;
+}
+
+
+  .left-section .nav-list  ul .navlink{
+  font-size: 0.9rem ;
+  list-style: none;
+  margin:0px ;
+  padding: 5px;
+  display: flex;
+  font-family: 'Poppins' sans-serif;
+  font-weight: 500;
+}
+
+.left-section .nav-list  ul .navlink:hover{
+  background-color:#111827;
+  color: white;
+  cursor: pointer;
+}
+}
