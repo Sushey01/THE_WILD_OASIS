@@ -6,7 +6,6 @@ import BookingDetailsTable from './BookingDetailsTable'
 const BookingDetails = () => {
   const {booking, isLoading} = useBooking()
 
-
   if (isLoading) return <h1>ERRORRRR</h1>
 
   return (
