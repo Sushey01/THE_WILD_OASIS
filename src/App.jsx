@@ -30,7 +30,7 @@ const App = () => {
     <BrowserRouter>
       <QueryClientProvider client={queryClient}>
         <div className="app-layout" style={{ display: "flex" }}>
-          {/* <Navbar /> */}
+          <Navbar />
           <div className="main-content" style={{ flex: 1, padding: "20px" }}>
             <Routes>
               <Route path="/dashboard" element={<Dashboard />} />
