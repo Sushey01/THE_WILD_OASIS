@@ -1,22 +1,43 @@
 import supabase from "./supabase";
 
-export async function getBookings() {
-  const { data, error } = await supabase
+
+const PAGE_SIZE = 10;
+
+export async function getBookings({ filter = null, sortBy = null, page = 1 } = {}) {
+  let query = supabase
     .from("bookings")
     .select(
-      `id, created_at, startDate, endDate, numNights, numGuests, status, totalPrice, cabins(name), guests(fullName, email)`
-    )
-    
+      "id, created_at, startDate, endDate, numNights, numGuests, status, totalPrice, cabins(name), guests(fullName, email)",
+      { count: "exact" }
+    );
+
+  // FILTER
+  if (filter)
+    query = query[filter.method || "eq"](filter.field, filter.value);
+
+  // SORT
+  if (sortBy)
+    query = query.order(sortBy.field, {
+      ascending: sortBy.direction === "asc",
+    });
+
+  // PAGINATION
+  if (page) {
+    const from = (page - 1) * PAGE_SIZE;
+    const to = from + PAGE_SIZE - 1;
+    query = query.range(from, to);
+  }
+
+  const { data, error, count } = await query;
 
   if (error) {
     console.error(error);
     throw new Error("Bookings could not be loaded");
   }
-  if (!data) {
-    throw new Error("No bookings found");
-  }
-  return data;
+
+  return { data, count };
 }
+
 
 export async function getBooking(id) {
   const { data, error } = await supabase

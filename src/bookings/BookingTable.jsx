@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import useBookings from "./useBookings";
 
 const BookingTable = () => {
-  const { data:bookings, isLoading, error } = useBookings();
+  const { bookings, isLoading, error } = useBookings();
   const [openMenuId, setOpenMenuId] = useState(null);
 
   const toggleMenu = (id) => {
@@ -24,7 +24,7 @@ const BookingTable = () => {
   if (!bookings || bookings.length === 0)
     return <p>No data to show at the moment</p>;
 
-  const validBookings = bookings.filter((b) => b && b.guests && b.cabins);
+  const EveryBookings = bookings.filter((b) => b && b.guests && b.cabins);
 
   return (
     <div className={styles.wrapper}>
@@ -40,7 +40,7 @@ const BookingTable = () => {
           </tr>
         </thead>
         <tbody>
-          {validBookings.map((booking, index) => {
+          {EveryBookings.map((booking, index) => {
             const {
               id,
               startDate,
