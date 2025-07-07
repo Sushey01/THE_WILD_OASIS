@@ -39,7 +39,7 @@ export default function Layout() {
         </div>
 
         {/* Main Content */}
-        <div style={{ width: "80%" }}>
+      <div style={{ width: "80%" }}>
           <div className="right-section">
             {/* User Topbar */}
             <div className="user-section" style={{ width:"80%",display: "flex", alignItems: "center", padding: "10px", paddingRight:"40px", backgroundColor: "#1f2937" }}>
@@ -63,7 +63,7 @@ export default function Layout() {
             <div style={{ background: "#111827", overflowY: "scroll", height: "100vh" }}>
               <Outlet />
             </div>
-          </div>
+          </div>  
         </div>
       </div>
 
