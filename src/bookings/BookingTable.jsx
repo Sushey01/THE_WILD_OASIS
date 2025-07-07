@@ -3,8 +3,8 @@ import styles from "./BookingTable.module.css";
 import { useNavigate } from "react-router-dom";
 import useBookings from "./useBookings";
 
-const BookingTable = (bookings, isLoading, error) => {
-  // const { data:bookings, isLoading, error } = useBookings();
+const BookingTable = () => {
+  const { data:bookings, isLoading, error } = useBookings();
   const [openMenuId, setOpenMenuId] = useState(null);
 
   const toggleMenu = (id) => {

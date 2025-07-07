@@ -7,31 +7,31 @@ import useBookings from "../bookings/useBookings";
 const Bookings = () => {
   const { bookings: originalBookings, isLoading, error } = useBookings();
 
-  const [filteredBookings, setFilteredBookings] = useState([]);
+  // const [filteredBookings, setFilteredBookings] = useState([]);
   const [activeFilter, setActiveFilter] = useState("all");
 
 
 
-  const handleFilter = (type) => {
-    if (!originalBookings) return
-    setActiveFilter(type);
+  // const handleFilter = (type) => {
+  //   if (!originalBookings) return
+  //   setActiveFilter(type);
 
-    switch (type) {
-      case "checked-in":
-        setFilteredBookings(originalBookings.filter((b) => b.status === "checked-in"));
-        break;
-      case "checked-out":
-        setFilteredBookings(originalBookings.filter((b) => b.status === "checked-out"));
-        break;
-      case "unconfirmed":
-        setFilteredBookings(originalBookings.filter((b) => b.status === "unconfirmed")); 
-        break;
-      case "all":
-      default:
-        setFilteredBookings(originalBookings);
-        break;
-    }
-  };
+  //   switch (type) {
+  //     case "checked-in":
+  //       setFilteredBookings(originalBookings.filter((b) => b.status === "checked-in"));
+  //       break;
+  //     case "checked-out":
+  //       setFilteredBookings(originalBookings.filter((b) => b.status === "checked-out"));
+  //       break;
+  //     case "unconfirmed":
+  //       setFilteredBookings(originalBookings.filter((b) => b.status === "unconfirmed")); 
+  //       break;
+  //     case "all":
+  //     default:
+  //       setFilteredBookings(originalBookings);
+  //       break;
+  //   }
+  // };
 
   return (
     <>
@@ -42,26 +42,21 @@ const Bookings = () => {
           <div className={styles.filters}>
             <div className={styles.filter1}>
               <button
-                className={activeFilter === "all" ? styles.primary : styles.secondary}
-                onClick={() => handleFilter("all")} // ❌ You had a typo: `onclick` → should be `onClick`
-              >
+                className={activeFilter === "all" ? styles.primary : styles.secondary}>
                 All
               </button>
               <button
                 className={activeFilter === "checked-out" ? styles.primary : styles.secondary}
-                onClick={() => handleFilter("checked-out")}
               >
                 Checked out
               </button>
               <button
                 className={activeFilter === "checked-in" ? styles.primary : styles.secondary}
-                onClick={() => handleFilter("checked-in")}
               >
                 Checked in
               </button>
               <button
                 className={activeFilter === "unconfirmed" ? styles.primary : styles.secondary}
-                onClick={() => handleFilter("unconfirmed")}
               >
                 Unconfirmed
               </button>
@@ -79,9 +74,9 @@ const Bookings = () => {
         </div>
 
         <div className={styles.table}>
-          <BookingTable bookings={filteredBookings} isLoading={isLoading} error={error} />
+          <BookingTable   />
           <div className={styles.footer}>
-            <p className={styles.totalPage}>Showing 1 to 10 of {filteredBookings?.length || 0} results</p>
+            <p className={styles.totalPage}>Showing 1 to 10 of  results</p>
             <div className={styles.buttons}>
               <button className={styles.button1}>
                 <svg
