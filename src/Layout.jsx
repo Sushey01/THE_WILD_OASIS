@@ -1,9 +1,7 @@
 import { Outlet, Link } from "react-router-dom";
-import Navbar from "./src/components/Navbar";
-import logo from "./src/assets/images/logo-dark.png";
-import userLogo from "./src/assets/images/mainuser.jpg";
-import DeleteBooking from "./src/components/DeleteBooking";
-import MainHeading from "./src/components/MainHeading";
+import Navbar from "../src/pages/Navbar";
+import logo from "../src/assets/images/logo-dark.png"
+import userLogo from "../src/assets/images/mainuser.jpg";
 import { useState } from "react";
 
 export default function Layout() {
@@ -11,31 +9,30 @@ export default function Layout() {
 
   return (
     <div style={{ position: "relative" }}>
-      <MainHeading />
+      {/* <MainHeading /> */}
 
       <div style={{ display: "flex" }}>
         {/* Sidebar */}
         <div style={{ width: "20%", backgroundColor: "#18212f" }}>
           <div className="left-section">
-            <div style={{ display: "flex", justifyContent: "center", marginTop: "15px" }}>
+            {/* <div style={{ display: "flex", justifyContent: "center", marginTop: "15px" }}>
               <img
                 src={logo}
                 alt="Logo"
                 style={{ width: "140px", height: "auto", backgroundColor: "#18212f" }}
               />
-            </div>
+            </div> */}
+
+
+              <Navbar/>
 
             <div className="nav-list">
               <ul>
-                <SidebarLink to="/" label="Home" icon="house" />
+                {/* <SidebarLink to="/" label="Home" icon="house" />
                 <SidebarLink to="/bookings" label="Bookings" icon="calendar-days" />
                 <SidebarLink to="/cabins" label="Cabins" icon="castle" />
                 <SidebarLink to="/users" label="Users" icon="users" />
-                <SidebarLink to="/settings" label="Settings" icon="settings" />
-                <SidebarLink to="/details" label="Booking Details" icon="eye" />
-                <SidebarLink to="/cabinform" label="Cabin Form" icon="plus-square" />
-                <SidebarLink to="/editform" label="Edit Cabin" icon="edit" />
-                <SidebarLink to="/delete" label="Delete Booking" icon="trash-2" />
+                <SidebarLink to="/settings" label="Settings" icon="users" /> */}
               </ul>
             </div>
           </div>
@@ -45,7 +42,7 @@ export default function Layout() {
         <div style={{ width: "80%" }}>
           <div className="right-section">
             {/* User Topbar */}
-            <div className="user-section" style={{ display: "flex", alignItems: "center", padding: "10px", backgroundColor: "#1f2937", justifyContent: "space-between" }}>
+            <div className="user-section" style={{ width:"80%",display: "flex", alignItems: "center", padding: "10px", paddingRight:"40px", backgroundColor: "#1f2937" }}>
               <div style={{ display: "flex", alignItems: "center" }}>
                 <img
                   src={userLogo}
@@ -55,7 +52,7 @@ export default function Layout() {
                 <p style={{ color: "white", marginLeft: "10px" }}>User</p>
               </div>
 
-              <div className="userButtons" style={{ display: "flex", gap: "20px" }}>
+              <div className="userButtons" style={{ display: "flex", gap: "20px"}}>
                 <UserIcon type="user" />
                 <UserIcon type="sun" />
                 <UserIcon type="log-out" />
@@ -63,7 +60,7 @@ export default function Layout() {
             </div>
 
             {/* Outlet for route content */}
-            <div style={{ padding: "20px", background: "#111827", overflowY: "scroll", height: "100vh" }}>
+            <div style={{ background: "#111827", overflowY: "scroll", height: "100vh" }}>
               <Outlet />
             </div>
           </div>

@@ -1,4 +1,6 @@
 .setting-title{
+    width: 100%;
+    max-width: 1100px;
     background-color: #111827;
     color: #e5e7eb;
     font-size: 16px;
@@ -8,4 +10,5 @@
     font-family: 500;
     font-family: Poppins, sans-serif;
     padding: 40px;
+    
 }

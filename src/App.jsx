@@ -16,6 +16,7 @@ import BookingDetails from "./bookings/BookingDetails"; // Details component
 import CabinTable from "./pages/CabinTable"; 
 import CheckinBooking from "./bookings/CheckinBooking"; 
 import BookingDetailsTable from "./bookings/BookingDetailsTable"; 
+import Layout from "./Layout";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -29,16 +30,18 @@ const App = () => {
   return (
     <BrowserRouter>
       <QueryClientProvider client={queryClient}>
-        <div className="app-layout" style={{ display: "flex" }}>
-          <Navbar />
-          <div className="main-content" style={{ flex: 1, padding: "20px" }}>
+        {/* <div className="app-layout" style={{ display: "flex" }}> */}
+          {/* <Navbar /> */}
+          <div className="main-content" style={{ flex: 1 }}>
             <Routes>
+              <Route path="/" element={<Layout/>}>
               <Route path="/dashboard" element={<Dashboard />} />
               <Route path="/bookings" element={<Bookings />} />
               <Route path="/bookings/:bookingId" element={<Bookings />} />
               <Route path="/cabins" element={<Cabin />} />
               <Route path="/users" element={<LoginForm />} />
               <Route path="/settings" element={<Settings />} />
+              </Route>
               
               {/* Dynamic param for booking details */}
               <Route path="/seedetails/:id" element={<BookingDetails />} />
@@ -50,7 +53,7 @@ const App = () => {
               <Route path="*" element={<Dashboard />} />
             </Routes>
           </div>
-        </div>
+        {/* </div> */}
 
         <ReactQueryDevtools initialIsOpen={false} />
 
