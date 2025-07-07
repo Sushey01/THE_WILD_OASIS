@@ -1,9 +1,8 @@
 import React from "react";
 import "./Navbar.css";
 import logo from "../assets/images/logo-dark.png";
-import userLogo from "../assets/images/mainuser.jpg"
-import { Link} from "react-router-dom";
-
+import userLogo from "../assets/images/mainuser.jpg";
+import { Link } from "react-router-dom";
 
 export default function Navbar() {
   return (
@@ -36,10 +35,10 @@ export default function Navbar() {
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="lucide lucide-house-icon lucide-house"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="lucide lucide-house-icon lucide-house"
                 color="#4f46e5"
               >
                 <path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8" />
@@ -47,7 +46,8 @@ export default function Navbar() {
               </svg>
 
               Home
-            </Link><br/>
+            </Link>
+            <br />
             <Link className="navlink" to="/bookings">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -56,10 +56,10 @@ export default function Navbar() {
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="lucide lucide-calendar-days-icon lucide-calendar-days"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="lucide lucide-calendar-days-icon lucide-calendar-days"
                 color="#4f46e5"
               >
                 <path d="M8 2v4" />
@@ -74,7 +74,8 @@ export default function Navbar() {
                 <path d="M16 18h.01" />
               </svg>
               Bookings
-            </Link><br/>
+            </Link>
+            <br />
             <Link className="navlink" to="/cabins">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -83,10 +84,10 @@ export default function Navbar() {
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="lucide lucide-castle-icon lucide-castle"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="lucide lucide-castle-icon lucide-castle"
                 color="#4f46e5"
               >
                 <path d="M22 20v-9H2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2Z" />
@@ -100,7 +101,8 @@ export default function Navbar() {
                 <path d="M14 4V2" />
               </svg>
               Cabins
-            </Link><br/>
+            </Link>
+            <br />
             <Link className="navlink" to="/users">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -109,10 +111,10 @@ export default function Navbar() {
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="lucide lucide-users-icon lucide-users"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="lucide lucide-users-icon lucide-users"
                 color="#4f46e5"
               >
                 <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
@@ -121,7 +123,8 @@ export default function Navbar() {
                 <path d="M16 3.13a4 4 0 0 1 0 7.75" />
               </svg>
               Users
-            </Link><br/>
+            </Link>
+            <br />
             <Link className="navlink" to="/settings">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -130,18 +133,18 @@ export default function Navbar() {
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="lucide lucide-settings-icon lucide-settings"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="lucide lucide-settings-icon lucide-settings"
                 color="#4f46e5"
               >
                 <path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z" />
                 <circle cx="12" cy="12" r="3" />
               </svg>
               Settings
-            </Link><br/>
-
+            </Link>
+            <br />
           </ul>
         </div>
       </div>
@@ -157,17 +160,21 @@ export default function Navbar() {
               padding: "5px",
             }}
           />
-          <p style={{
-            gap: '10px',
-            color: 'white',
-            marginRight: '25px'
-          }} >User</p>
+          <p
+            style={{
+              gap: "10px",
+              color: "white",
+              marginRight: "25px",
+            }}
+          >
+            User
+          </p>
 
           <div
             className="userButtons"
             style={{
               height: "50px",
-              marginRight: '50px',
+              marginRight: "50px",
             }}
           >
             <svg
@@ -177,10 +184,10 @@ export default function Navbar() {
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="lucide lucide-user-icon lucide-user"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="lucide lucide-user-icon lucide-user"
             >
               <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
               <circle cx="12" cy="7" r="4" />
@@ -192,10 +199,10 @@ export default function Navbar() {
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="lucide lucide-sun-icon lucide-sun"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="lucide lucide-sun-icon lucide-sun"
             >
               <circle cx="12" cy="12" r="4" />
               <path d="M12 2v2" />
@@ -214,10 +221,10 @@ export default function Navbar() {
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="lucide lucide-log-out-icon lucide-log-out"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="lucide lucide-log-out-icon lucide-log-out"
             >
               <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
               <polyline points="16 17 21 12 16 7" />

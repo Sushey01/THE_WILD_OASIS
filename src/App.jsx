@@ -41,7 +41,7 @@ const App = () => {
               <Route path="/settings" element={<Settings />} />
               
               {/* Dynamic param for booking details */}
-              <Route path="/seedetails/:id" element={<BookingDetailsTable />} />
+              <Route path="/seedetails/:id" element={<BookingDetails />} />
               
               <Route path="/cabinform" element={<CabinTable />} />
               <Route path="/checkin" element={<CheckinBooking />} />

@@ -3,18 +3,54 @@
     flex-direction: column;
     width: 100%;
     justify-content: space-between;
-
+    gap: 20px;
 }
 
 
 .head{
     display: flex;
+    padding: 20px;
+
+    justify-content: space-between;
+    
 }
 .title{
     display: flex;
+    gap: 10px;
 }
 
 
 .back{
+    display: flex;
     align-items: center;
+}
+.footer{
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+
+.footer button{
+    padding: 10px;
+     color: #fff;
+     font-weight: 500;
+     font-family: Poppins, sans-serif;
+     border: none;
+     border-radius: 5px;
+}
+
+
+.button1{
+    background-color: purple;
+    
+}
+
+.button2{
+    background-color: maroon;
+}
+
+.button3{
+    background-color: #212121;
 }
