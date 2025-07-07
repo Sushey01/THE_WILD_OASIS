@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import styles from "./BookingTable.module.css";
 import { useNavigate } from "react-router-dom";
-import useBookings from "./useBookings";
+// import useBookings from "./useBookings";
 
-const BookingTable = () => {
-  const { bookings, isLoading, error } = useBookings();
+const BookingTable = ({bookings, isLoading, error}) => {
+  // const { bookings, isLoading, error } = useBookings();
   const [openMenuId, setOpenMenuId] = useState(null);
 
   const toggleMenu = (id) => {
