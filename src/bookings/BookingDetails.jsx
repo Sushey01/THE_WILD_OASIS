@@ -8,7 +8,9 @@ const BookingDetails = () => {
   const { id } = useParams(); // get booking id from url
   const navigate = useNavigate();
 
-  const { data: booking, isLoading, error } = useBooking(id); // pass id to hook
+  // const { data: booking, isLoading, error } = useBooking(id); // pass id to hook
+  const { booking, isLoading, error } = useBooking();
+
 
   if (isLoading) return <h1>Loading...</h1>;
   if (error) return <h1>Error loading booking</h1>;

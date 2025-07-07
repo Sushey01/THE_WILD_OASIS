@@ -1,23 +1,22 @@
-import React from 'react'
 import { useQuery } from '@tanstack/react-query';
-import { getCabins } from '../services/apiCabins';
 import { getBooking } from '../services/apiBoookings';
-import {useParams} from "react-router-dom"
+import { useParams } from 'react-router-dom';
 
 const useBooking = () => {
-    const {bookingId} = useParams();
+  const { id } = useParams(); // your route param is "id"
 
-    const {
-        isLoading,
-        booking,
-        error,
-    }=useQuery({
-        queryKey:["booking"],
-        queryFn:()=>getBooking(bookingId),
-        retry:false,
-    })
+  const {
+    isLoading,
+    data,
+    error,
+  } = useQuery({
+    queryKey: ['booking', id],
+    queryFn: () => getBooking(id),
+    retry: false,
+    enabled: !!id, // only run query if id exists
+  });
 
-  return {isLoading, error, booking}
-}
+  return { isLoading, error, booking: data };
+};
 
-export default useBooking
+export default useBooking;
