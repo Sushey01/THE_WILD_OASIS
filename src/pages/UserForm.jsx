@@ -59,6 +59,7 @@ export function UserForm() {
             placeholder=""
             value={formData.fullName}
             onChange={handleChange}
+            required
           />
         </div>
 

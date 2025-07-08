@@ -22,6 +22,9 @@
 
 .settings input{
     padding: 10px;
+    background-color: #18212F;
+    border: 1px solid #8f9193;
+    border-radius: 5px;
 }
 
 
