@@ -4,8 +4,13 @@ import logo from "../src/assets/images/logo-dark.png"
 import userLogo from "../src/assets/images/mainuser.jpg";
 import { useState } from "react";
 import MainHeading from "../src/pages/MainHeading"
+// import { useDarkMode } from "./context/DarkModeContext";
+import { useDarkMode } from "./context/DarkModeContext";
 
 export default function Layout() {
+
+  
+  // const {isDarkMode, toggleDarkMode} = useDarkMode();
   const [showDeleteBtn, setShowDeleteBtn] = useState(false);
 
   return (
@@ -61,7 +66,8 @@ export default function Layout() {
               height: "50px",
             }}
           >
-            <svg
+            <button style={{color:"#4f46e5", background:"transparent", border:"none"}}>
+              <svg
               xmlns="http://www.w3.org/2000/svg"
               width="20"
               height="20"
@@ -76,7 +82,10 @@ export default function Layout() {
               <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
               <circle cx="12" cy="7" r="4" />
             </svg>
-            <svg
+            </button>
+            
+            <button style={{color:"#4f46e5", background:"transparent", border:"none"}}>
+              <svg
               xmlns="http://www.w3.org/2000/svg"
               width="20"
               height="20"
@@ -98,6 +107,9 @@ export default function Layout() {
               <path d="m6.34 17.66-1.41 1.41" />
               <path d="m19.07 4.93-1.41 1.41" />
             </svg>
+            </button>
+            
+            <button style={{color:"#4f46e5", background:"transparent", border:"none"}}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="20"
@@ -114,6 +126,7 @@ export default function Layout() {
               <polyline points="16 17 21 12 16 7" />
               <line x1="21" x2="9" y1="12" y2="12" />
             </svg>
+            </button>
           </div>
             </div>
             
