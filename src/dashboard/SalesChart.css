@@ -1,7 +1,11 @@
 /* SalesChart.css */
 .sales-chart {
   grid-column: 1 / -1;
-  padding: 1rem 0;
+  padding: 30px;
+  border: none;
+  background-color: #18212f;
+  border-radius: 7px;
+  width: 100%;
 }
 
 /* Optional: style the heading if needed */
@@ -9,6 +13,9 @@
   font-size: 1.8rem;
   font-weight: 600;
   margin-bottom: 1rem;
+    font-size: 20px;
+  font-family: Poppins, sans-serif;
+  color: #E5E7EB;
 }
 
 /* Customize Recharts grid line colors if needed */

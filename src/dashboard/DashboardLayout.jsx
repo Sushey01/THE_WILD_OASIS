@@ -5,10 +5,10 @@ function DashboardLayout() {
   const { bookings, isLoading, numDays } = useRecentBookings();
 
   // Show basic loading message
-  if (isLoading) return <div>Loading sales data...</div>;
+  if (isLoading) return <div style={{color:"#E5E7EB"}}>Loading sales data...</div>;
 
   return (
-    <div style={{ padding: "2rem" }}>
+    <div >
       <SalesChart bookings={bookings} numDays={numDays} />
     </div>
   );
