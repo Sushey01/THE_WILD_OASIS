@@ -103,7 +103,7 @@ export default function Navbar() {
               Cabins
             </Link>
             <br />
-            <Link className="navlink" to="/users">
+            <Link className="navlink" to="/user">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
