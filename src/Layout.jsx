@@ -4,13 +4,14 @@ import logo from "../src/assets/images/logo-dark.png"
 import userLogo from "../src/assets/images/mainuser.jpg";
 import { useState } from "react";
 import MainHeading from "../src/pages/MainHeading"
-// import { useDarkMode } from "./context/DarkModeContext";
+import DarkModeToggle from "./dashboard/DarkModeToggle";
 import { useDarkMode } from "./context/DarkModeContext";
+
 
 export default function Layout() {
 
   
-  // const {isDarkMode, toggleDarkMode} = useDarkMode();
+  const {isDarkMode, toggleDarkMode} = useDarkMode();
   const [showDeleteBtn, setShowDeleteBtn] = useState(false);
 
   return (
@@ -107,6 +108,7 @@ export default function Layout() {
               <path d="m6.34 17.66-1.41 1.41" />
               <path d="m19.07 4.93-1.41 1.41" />
             </svg>
+            {/* <DarkModeToggle /> */}
             </button>
             
             <button style={{color:"#4f46e5", background:"transparent", border:"none"}}>
