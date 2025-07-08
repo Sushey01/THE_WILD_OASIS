@@ -148,7 +148,7 @@ export default function Navbar() {
           </ul>
         </div>
       </div>
-      <div className="right-section">
+      {/* <div className="right-section">
         <div className="user-section">
           <img
             src={userLogo}
@@ -232,7 +232,7 @@ export default function Navbar() {
             </svg>
           </div>
         </div>
-      </div>
+      </div> */}
     </>
   );
 }
