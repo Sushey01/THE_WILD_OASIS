@@ -27,7 +27,7 @@ export default function Navbar() {
         </div>
         <div className="nav-list">
           <ul>
-            <Link className="navlink" to="/dashboard">
+            <Link className="navlink" to="/">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"

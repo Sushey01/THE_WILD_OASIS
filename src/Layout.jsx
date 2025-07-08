@@ -3,17 +3,20 @@ import Navbar from "../src/pages/Navbar";
 import logo from "../src/assets/images/logo-dark.png"
 import userLogo from "../src/assets/images/mainuser.jpg";
 import { useState } from "react";
+import MainHeading from "../src/pages/MainHeading"
 
 export default function Layout() {
   const [showDeleteBtn, setShowDeleteBtn] = useState(false);
 
   return (
     <div style={{ position: "relative" }}>
-      {/* <MainHeading /> */}
+
+     
 
       <div style={{ display: "flex" }}>
         {/* Sidebar */}
         <div style={{ width: "20%", backgroundColor: "#18212f" }}>
+          
           <div className="left-section">
             {/* <div style={{ display: "flex", justifyContent: "center", marginTop: "15px" }}>
               <img
@@ -23,7 +26,7 @@ export default function Layout() {
               />
             </div> */}
 
-
+              
               <Navbar/>
 
             <div className="nav-list">

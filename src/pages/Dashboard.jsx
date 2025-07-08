@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./Dashboard.module.css";
+import DashboardLayout from "../dashboard/DashboardLayout";
 
 const Dashboard = () => {
   return (
@@ -130,6 +131,7 @@ const Dashboard = () => {
             </div>
           </div>
         </div>
+        <DashboardLayout/>
       </div>
     </section>
   );

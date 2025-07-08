@@ -13,6 +13,7 @@
     "@supabase/supabase-js": "^2.50.2",
     "@tanstack/react-query": "^5.81.2",
     "@tanstack/react-query-devtools": "^5.81.5",
+    "date-fns": "^4.1.0",
     "dotenv": "^16.6.0",
     "postgres": "^3.4.7",
     "psql": "^0.0.1",
@@ -20,7 +21,9 @@
     "react-dom": "^18.1.0",
     "react-hook-form": "^7.59.0",
     "react-hot-toast": "^2.5.2",
-    "react-icons": "^5.5.0"
+    "react-icons": "^5.5.0",
+    "react-router-dom": "^7.6.3",
+    "recharts": "^3.0.2"
   },
   "devDependencies": {
     "@eslint/js": "^9.29.0",

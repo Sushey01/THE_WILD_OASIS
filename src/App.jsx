@@ -12,16 +12,18 @@ import Bookings from "./bookings/Bookings";
 import Cabin from "./pages/Cabin";
 import Settings from "./pages/Settings";
 import LoginForm from "./pages/LoginForm";
-import BookingDetails from "./bookings/BookingDetails"; // Details component
-import CabinTable from "./pages/CabinTable"; 
-import CheckinBooking from "./bookings/CheckinBooking"; 
-import BookingDetailsTable from "./bookings/BookingDetailsTable"; 
+import BookingDetails from "./bookings/BookingDetails";
+import CabinTable from "./pages/CabinTable";
+import CheckinBooking from "./bookings/CheckinBooking";
 import Layout from "./Layout";
+
+// Import your DarkModeProvider
+import { DarkModeProvider } from "./context/DarkModeContext";
 
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
-      staleTime: 60 * 10 * 1000, // 10 minutes in milliseconds
+      staleTime: 60 * 10 * 1000,
     },
   },
 });
@@ -30,33 +32,30 @@ const App = () => {
   return (
     <BrowserRouter>
       <QueryClientProvider client={queryClient}>
-        {/* <div className="app-layout" style={{ display: "flex" }}> */}
-          {/* <Navbar /> */}
+        {/* Wrap everything inside DarkModeProvider */}
+        <DarkModeProvider>
           <div className="main-content" style={{ flex: 1 }}>
             <Routes>
-              <Route path="/" element={<Layout/>}>
-              <Route path="/dashboard" element={<Dashboard />} />
-              <Route path="/bookings" element={<Bookings />} />
-              <Route path="/bookings/:bookingId" element={<Bookings />} />
-              <Route path="/cabins" element={<Cabin />} />
-              <Route path="/users" element={<LoginForm />} />
-              <Route path="/settings" element={<Settings />} />
+              <Route path="/" element={<Layout />}>
+                <Route path="/" element={<Dashboard />} />
+                <Route path="/bookings" element={<Bookings />} />
+                <Route path="/bookings/:bookingId" element={<Bookings />} />
+                <Route path="/cabins" element={<Cabin />} />
+                <Route path="/users" element={<LoginForm />} />
+                <Route path="/settings" element={<Settings />} />
               </Route>
-              
-              {/* Dynamic param for booking details */}
+
               <Route path="/seedetails/:id" element={<BookingDetails />} />
-              
+
               <Route path="/cabinform" element={<CabinTable />} />
               <Route path="/checkin" element={<CheckinBooking />} />
-              
-              {/* Fallback */}
+
               <Route path="*" element={<Dashboard />} />
             </Routes>
           </div>
-        {/* </div> */}
+        </DarkModeProvider>
 
         <ReactQueryDevtools initialIsOpen={false} />
-
         <Toaster
           position="top-center"
           gutter={12}

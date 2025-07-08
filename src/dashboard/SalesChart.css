@@ -1,0 +1,18 @@
+/* SalesChart.css */
+.sales-chart {
+  grid-column: 1 / -1;
+  padding: 1rem 0;
+}
+
+/* Optional: style the heading if needed */
+.sales-chart .h2 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+/* Customize Recharts grid line colors if needed */
+.sales-chart .recharts-cartesian-grid-horizontal line,
+.sales-chart .recharts-cartesian-grid-vertical line {
+  stroke: var(--color-grey-300); /* fallback grey */
+}
