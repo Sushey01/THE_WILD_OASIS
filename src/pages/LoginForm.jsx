@@ -1,21 +1,24 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import "../pages/LoginForm.css"
-import {login} from "../services/apiAuth"
 import { useLogin } from '../services/useLogin';
 import Logo from "../assets/images/logo-dark.png";
+
 
 const LoginForm = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("susan@gmail.com"); //default email
   const [password, setPassword] = useState("okami012"); //default password
   const {login, isLoading} = useLogin();
+  
 
   function handleSubmit(e) {
     e.preventDefault();
+    console.log(e.target.value)
     if (!email || !password) return
     login({email, password})
-    // console.log("Logging in with:", email, password);
+    
+    console.log("Logging in with:", email, password);
 
     // return(navigate('/'))
   }
@@ -36,7 +39,7 @@ const LoginForm = () => {
               type='email'
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              placeholder='demo@example.com'
+              placeholder='susan@gmail.com'
               disabled={isLoading}
             />
           </div>

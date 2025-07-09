@@ -3,6 +3,7 @@ import Navbar from "../src/pages/Navbar";
 import logo from "../src/assets/images/logo-dark.png"
 import userLogo from "../src/assets/images/mainuser.jpg";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import MainHeading from "../src/pages/MainHeading"
 import DarkModeToggle from "./dashboard/DarkModeToggle";
 import { useDarkMode } from "./context/DarkModeContext";
@@ -10,7 +11,7 @@ import { useDarkMode } from "./context/DarkModeContext";
 
 export default function Layout() {
 
-  
+  const navigate=useNavigate()
   const {isDarkMode, toggleDarkMode} = useDarkMode();
   const [showDeleteBtn, setShowDeleteBtn] = useState(false);
 
@@ -111,7 +112,7 @@ export default function Layout() {
             {/* <DarkModeToggle /> */}
             </button>
             
-            <button style={{color:"#4f46e5", background:"transparent", border:"none"}}>
+            <button onClick={()=>navigate("/login")} style={{color:"#4f46e5", background:"transparent", border:"none"}}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="20"
