@@ -15,10 +15,13 @@ import BookingDetails from "./bookings/BookingDetails";
 import CabinTable from "./pages/CabinTable";
 import CheckinBooking from "./bookings/CheckinBooking";
 import Layout from "./Layout";
+import Login from "./pages/LoginForm"
+
 
 // Import your DarkModeProvider
 import { DarkModeProvider } from "./context/DarkModeContext";
 import UserForm from "./pages/UserForm";
+import LoginForm from "./pages/LoginForm";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -46,6 +49,8 @@ const App = () => {
               </Route>
 
               <Route path="/seedetails/:id" element={<BookingDetails />} />
+                <Route path="/login" element={<LoginForm />} />
+
 
               <Route path="/cabinform" element={<CabinTable />} />
               <Route path="/checkin" element={<CheckinBooking />} />
