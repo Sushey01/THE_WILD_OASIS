@@ -22,6 +22,7 @@ import Login from "./pages/LoginForm"
 import { DarkModeProvider } from "./context/DarkModeContext";
 import UserForm from "./pages/UserForm";
 import LoginForm from "./pages/LoginForm";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -39,7 +40,7 @@ const App = () => {
         <DarkModeProvider>
           <div className="main-content" style={{ flex: 1 }}>
             <Routes>
-              <Route path="/" element={<Layout />}>
+              <Route path="/" element={<ProtectedRoute><Layout /></ProtectedRoute>}>
                 <Route path="/" element={<Dashboard />} />
                 <Route path="/bookings" element={<Bookings />} />
                 <Route path="/bookings/:bookingId" element={<Bookings />} />
