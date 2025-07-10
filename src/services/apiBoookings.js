@@ -79,9 +79,9 @@ export async function getBookingsAfterDate(date) {
 
   const { data, error } = await supabase
     .from("bookings")
-    .select("created_at, totalPrice, extrasPrice") // ✅ Use exact camelCase names
-    .gte("created_at", startDate)
-    .lte("created_at", endDate);
+    .select("startDate, status, numNights, totalPrice, extrasPrice") // include all fields needed for dashboard
+    .gte("startDate", startDate)
+    .lte("startDate", endDate);
 
   if (error) {
     console.error(error);
@@ -90,3 +90,4 @@ export async function getBookingsAfterDate(date) {
 
   return data;
 }
+
