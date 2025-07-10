@@ -79,8 +79,8 @@ export async function getBookingsAfterDate(date) {
 
   const { data, error } = await supabase
     .from("bookings")
-    .select("startDate, status, numNights, totalPrice, extrasPrice") // include all fields needed for dashboard
-    .gte("startDate", startDate)
+    .select("created_at, startDate, totalPrice, extrasPrice, status") // select both fields
+    .gte("startDate", startDate) // still filter by startDate
     .lte("startDate", endDate);
 
   if (error) {
@@ -90,4 +90,5 @@ export async function getBookingsAfterDate(date) {
 
   return data;
 }
+
 

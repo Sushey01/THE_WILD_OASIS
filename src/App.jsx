@@ -39,25 +39,23 @@ const App = () => {
         {/* Wrap everything inside DarkModeProvider */}
         <DarkModeProvider>
           <div className="main-content" style={{ flex: 1 }}>
-            <Routes>
-              <Route path="/" element={<ProtectedRoute><Layout /></ProtectedRoute>}>
-                <Route path="/" element={<Dashboard />} />
-                <Route path="/bookings" element={<Bookings />} />
-                <Route path="/bookings/:bookingId" element={<Bookings />} />
-                <Route path="/cabins" element={<Cabin />} />
-                <Route path="/user" element={<UserForm />} />
-                <Route path="/settings" element={<Settings />} />
-              </Route>
+           <Routes>
+  <Route path="/" element={<ProtectedRoute><Layout /></ProtectedRoute>}>
+    <Route index element={<Dashboard />} />
+    <Route path="bookings" element={<Bookings />} />
+    <Route path="bookings/:bookingId" element={<Bookings />} />
+    <Route path="cabins" element={<Cabin />} />
+    <Route path="user" element={<UserForm />} />
+    <Route path="settings" element={<Settings />} />
+    <Route path="seedetails/:id" element={<BookingDetails />} />
+    <Route path="checkin" element={<CheckinBooking />} />
+  </Route>
 
-              <Route path="/seedetails/:id" element={<BookingDetails />} />
-                <Route path="/login" element={<LoginForm />} />
+  <Route path="/login" element={<LoginForm />} />
+  <Route path="/cabinform" element={<CabinTable />} />
+  <Route path="*" element={<Dashboard />} />
+</Routes>
 
-
-              <Route path="/cabinform" element={<CabinTable />} />
-              <Route path="/checkin" element={<CheckinBooking />} />
-
-              <Route path="*" element={<Dashboard />} />
-            </Routes>
           </div>
         </DarkModeProvider>
 
