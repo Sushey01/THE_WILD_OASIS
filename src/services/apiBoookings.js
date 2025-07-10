@@ -73,6 +73,7 @@ export async function getBooking(id) {
 
 
 export async function getBookingsAfterDate(date) {
+<<<<<<< HEAD
   const { data, error } = await supabase
     .from("bookings")
     .select("created_at, total_price as totalPrice, extras_price as extrasPrice")
@@ -84,5 +85,22 @@ export async function getBookingsAfterDate(date) {
     throw new Error("Bookings could not be loaded");
   }
 
+=======
+  if (!(date instanceof Date)) date = new Date(date);
+  const startDate = date.toISOString();
+  const endDate = new Date(new Date().setHours(23, 59, 59, 999)).toISOString();
+
+  const { data, error } = await supabase
+    .from("bookings")
+    .select("created_at, totalPrice, extrasPrice") // ✅ Use exact camelCase names
+    .gte("created_at", startDate)
+    .lte("created_at", endDate);
+
+  if (error) {
+    console.error(error);
+    throw new Error("Bookings could not be loaded");
+  }
+
+>>>>>>> master
   return data;
 }

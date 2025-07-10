@@ -20,7 +20,7 @@ const BookingTable = ({bookings, isLoading, error}) => {
   };
 
   if (isLoading) return <p>Loading...</p>;
-  if (error) return <p>Error loading bookings</p>;
+  if (error) return <p style={{color:"#E5EBE7"}}>Error loading bookings</p>;
   if (!bookings || bookings.length === 0)
     return <p>No data to show at the moment</p>;
 
