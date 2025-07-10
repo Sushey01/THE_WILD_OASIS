@@ -41,12 +41,12 @@ const App = () => {
           <div className="main-content" style={{ flex: 1 }}>
             <Routes>
               <Route path="/" element={<ProtectedRoute><Layout /></ProtectedRoute>}>
-                <Route path="/" element={<Dashboard />} />
+                {/* <Route path="/" element={<Dashboard />} /> */}
                 <Route path="/bookings" element={<Bookings />} />
                 <Route path="/bookings/:bookingId" element={<Bookings />} />
-                <Route path="/cabins" element={<Cabin />} />
-                <Route path="/user" element={<UserForm />} />
-                <Route path="/settings" element={<Settings />} />
+                {/* <Route path="/cabins" element={<Cabin />} /> */}
+                {/* <Route path="/user" element={<UserForm />} /> */}
+                {/* <Route path="/settings" element={<Settings />} /> */}
               </Route>
 
               <Route path="/seedetails/:id" element={<BookingDetails />} />
