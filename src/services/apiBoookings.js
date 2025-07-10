@@ -101,6 +101,6 @@ export async function getBookingsAfterDate(date) {
     throw new Error("Bookings could not be loaded");
   }
 
->>>>>>> master
+
   return data;
 }
