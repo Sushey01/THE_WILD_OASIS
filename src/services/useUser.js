@@ -8,5 +8,7 @@ export function useUser() {
     staleTime: 5 * 60 * 1000, // optional: cache for 5 minutes
   });
 
-  return { isLoading, user };
+  const isAuthenticated = !!user; // user exists means authenticated
+
+  return { isLoading, user, isAuthenticated };
 }

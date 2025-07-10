@@ -1,28 +1,15 @@
+import supabase from "./supabase";
 
-import supabase from "../services/supabase"
 
 const PAGE_SIZE = 10;
 
 export async function getBookings({ filter = null, sortBy = null, page = 1 } = {}) {
   let query = supabase
     .from("bookings")
-  .select(
-  `
-    id,
-    created_at,
-    start_date as startDate,
-    end_date as endDate,
-    num_nights as numNights,
-    num_guests as numGuests,
-    status,
-    total_price as totalPrice,
-    cabins(name),
-    guests(full_name as fullName, email)
-  `,
-  { count: "exact" }
-);
-
-
+    .select(
+      "id, created_at, startDate, endDate, numNights, numGuests, status, totalPrice, cabins(name), guests(fullName, email)",
+      { count: "exact" }
+    );
 
   // FILTER
   if (filter)
@@ -55,24 +42,23 @@ export async function getBookings({ filter = null, sortBy = null, page = 1 } = {
 export async function getBooking(id) {
   const { data, error } = await supabase
     .from("bookings")
- .select(
-  `
-    id,
-    created_at,
-    start_date as startDate,
-    end_date as endDate,
-    num_nights as numNights,
-    num_guests as numGuests,
-    status,
-    total_price as totalPrice,
-    isPaid,
-    hasBreakfast,
-    observations,
-    guests( full_name as fullName, email, nationalID),
-    cabins(name)
-  `
-)
-
+    .select(
+      `
+        id,
+        created_at,
+        startDate,
+        endDate,
+        numNights,
+        numGuests,
+        status,
+        totalPrice,
+        isPaid,
+        hasBreakfast,
+        observations,
+        guests(fullName, email, nationalID),
+        cabins(name)
+      `
+    )
     .eq("id", id)
     .single();
 
@@ -86,20 +72,21 @@ export async function getBooking(id) {
 
 
 
-export async function getBookingsAfterDate(date){
-  const {data, error} = await supabase
-  .from("bookings")
-  .select("created_at, totalPrice, extrasPrice")
-  .gte("created_at", date)
-  .lte("created_at", new Date(new Date().setHours(23, 59, 59, 999)).toISOString())
+export async function getBookingsAfterDate(date) {
+  if (!(date instanceof Date)) date = new Date(date);
+  const startDate = date.toISOString();
+  const endDate = new Date(new Date().setHours(23, 59, 59, 999)).toISOString();
 
+  const { data, error } = await supabase
+    .from("bookings")
+    .select("created_at, totalPrice, extrasPrice") // ✅ Use exact camelCase names
+    .gte("created_at", startDate)
+    .lte("created_at", endDate);
 
+  if (error) {
+    console.error(error);
+    throw new Error("Bookings could not be loaded");
+  }
 
-if (error){
-  // console.error(error);
-  throw new Error("Bookings could not get loaded")
-}
-
-return data;
-
+  return data;
 }
