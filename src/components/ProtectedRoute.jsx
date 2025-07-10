@@ -2,7 +2,7 @@
 
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useUser } from '../services/useUser'; // Your user hook
+import { useUser } from '../services/useUser';
 
 const fullPageStyle = {
   height: '100vh',
@@ -16,18 +16,15 @@ const ProtectedRoute = ({ children }) => {
   const navigate = useNavigate();
   const { user, isLoading } = useUser();
 
-  // Determine authentication state
-  const isAuthenticated = Boolean(user);
-
-  // Redirect unauthenticated users to the login page
   useEffect(() => {
-    if (!isLoading && !isAuthenticated) {
+    // When loading finishes and user is NOT authenticated, redirect to login
+    if (!isLoading && !user) {
       navigate('/login');
     }
-  }, [isLoading, isAuthenticated, navigate]);
+  }, [isLoading, user, navigate]);
 
-  // Show a loading message while checking auth status
   if (isLoading) {
+    // Show loading UI while fetching user info
     return (
       <div style={fullPageStyle}>
         <h2 style={{ color: '#E5EBE7', fontSize: '16px' }}>Loading...</h2>
@@ -35,11 +32,11 @@ const ProtectedRoute = ({ children }) => {
     );
   }
 
-  // Prevent rendering content while redirect is happening
-  if (!isAuthenticated) return null;
+  // If not loading, and no user, don't render anything (redirect happens in useEffect)
+  if (!user) return null;
 
-  // User is authenticated — render protected content
-  return children;
+  // User is authenticated, render children
+  return <>{children}</>;
 };
 
 export default ProtectedRoute;

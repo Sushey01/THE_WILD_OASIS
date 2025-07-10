@@ -1,15 +1,28 @@
 
-
+import supabase from "../services/supabase"
 
 const PAGE_SIZE = 10;
 
 export async function getBookings({ filter = null, sortBy = null, page = 1 } = {}) {
   let query = supabase
     .from("bookings")
-    .select(
-      "id, created_at, startDate, endDate, numNights, numGuests, status, totalPrice, cabins(name), guests(fullName, email)",
-      { count: "exact" }
-    );
+  .select(
+  `
+    id,
+    created_at,
+    start_date as startDate,
+    end_date as endDate,
+    num_nights as numNights,
+    num_guests as numGuests,
+    status,
+    total_price as totalPrice,
+    cabins(name),
+    guests(full_name as fullName, email)
+  `,
+  { count: "exact" }
+);
+
+
 
   // FILTER
   if (filter)
@@ -42,23 +55,24 @@ export async function getBookings({ filter = null, sortBy = null, page = 1 } = {
 export async function getBooking(id) {
   const { data, error } = await supabase
     .from("bookings")
-    .select(
-      `
-        id,
-        created_at,
-        startDate,
-        endDate,
-        numNights,
-        numGuests,
-        status,
-        totalPrice,
-        isPaid,
-        hasBreakfast,
-        observations,
-        guests(fullName, email, nationalID),
-        cabins(name)
-      `
-    )
+ .select(
+  `
+    id,
+    created_at,
+    start_date as startDate,
+    end_date as endDate,
+    num_nights as numNights,
+    num_guests as numGuests,
+    status,
+    total_price as totalPrice,
+    isPaid,
+    hasBreakfast,
+    observations,
+    guests( full_name as fullName, email, nationalID),
+    cabins(name)
+  `
+)
+
     .eq("id", id)
     .single();
 

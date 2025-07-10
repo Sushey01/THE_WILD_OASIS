@@ -1,9 +1,11 @@
 import { useQuery } from "@tanstack/react-query";
-import { getBookings } from "../services/apiBoookings"; // Ensure correct spelling
+import { getBookings } from "../services/apiBoookings";
 import { useSearchParams } from "react-router-dom";
+import { useUser } from "../services/useUser"; // import the user hook
 
 const useBookings = () => {
   const [searchParams] = useSearchParams();
+  const { user, isLoading: userLoading } = useUser(); // get user status
 
   // ✅ FILTER
   const filterValue = searchParams.get("status");
@@ -17,18 +19,14 @@ const useBookings = () => {
   const [field, direction] = sortByRaw.split("-");
   const sortBy = { field, direction };
 
-  // ✅ QUERY BOOKINGS
-  const {
-    isLoading,
-    data,
-    error,
-  } = useQuery({
+  // ✅ QUERY BOOKINGS — only after user is loaded
+  const { isLoading, data, error } = useQuery({
     queryKey: ["bookings", filter, sortBy],
     queryFn: () => getBookings({ filter, sortBy }),
-    retry: false, // Optional: disables automatic retry
+    enabled: !!user && !userLoading, // <- key fix
+    retry: false,
   });
 
-  // ✅ Handle different response shapes safely
   const bookings = Array.isArray(data)
     ? data
     : Array.isArray(data?.data)
