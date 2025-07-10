@@ -72,19 +72,17 @@ export async function getBooking(id) {
 
 
 
-export async function getBookingsAfterDate(date){
-  const {data, error} = await supabase
-  .from("bookings")
-  .select("created_at, totalPrice, extrasPrice")
-  .gte("created_at", date)
-  .lte("created_at", getToday({end:true}))
+export async function getBookingsAfterDate(date) {
+  const { data, error } = await supabase
+    .from("bookings")
+    .select("created_at, total_price as totalPrice, extras_price as extrasPrice")
+    .gte("created_at", date)
+    .lte("created_at", new Date(new Date().setHours(23, 59, 59, 999)).toISOString());
 
+  if (error) {
+    console.error(error);
+    throw new Error("Bookings could not be loaded");
+  }
 
-if (error){
-  console.error(error);
-  throw new Error("Bookings could not get loaded")
-}
-
-return data;
-
+  return data;
 }
