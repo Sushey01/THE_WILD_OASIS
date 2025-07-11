@@ -3,7 +3,7 @@ import styles from "./CheckinBooking.module.css";
 import BookingDetailsTable from "./BookingDetailsTable";
 import { useLocation, useNavigate } from "react-router-dom";
 
-const CheckinBooking = () => {
+const  CheckinBooking = () => {
   const { state } = useLocation();
   const navigate = useNavigate();
   const booking = state?.booking;

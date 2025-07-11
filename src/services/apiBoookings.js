@@ -76,9 +76,9 @@ export async function getBookingsAfterDate(date) {
 
   const { data, error } = await supabase
     .from("bookings")
-    .select("created_at, total_price as totalPrice, extras_price as extrasPrice")
-    .gte("created_at", date)
-    .lte("created_at", new Date(new Date().setHours(23, 59, 59, 999)).toISOString());
+    .select("created_at, totalPrice, extrasPrice") // ✅ Use exact camelCase names
+    .gte("created_at", startDate)
+    .lte("created_at", endDate);
 
   if (error) {
     console.error(error);
@@ -94,3 +94,5 @@ export async function getBookingsAfterDate(date) {
 
   return data;
 }
+
+
