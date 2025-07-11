@@ -206,7 +206,7 @@ function CabinTable({ filterStatus, sortBy }) {
                 alt={cabin.name}
                 style={{ width: "100px" }}
               />
-              <h3>{cabin.name}</h3>
+              <h4>{cabin.name}</h4>
               <p>{cabin.description}</p>
               <p>Max Capacity: {cabin.maxCapacity}</p>
               <p>Price: ${cabin.regularPrice}</p>
