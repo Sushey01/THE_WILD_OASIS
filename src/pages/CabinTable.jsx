@@ -152,7 +152,7 @@ function CabinTable({ filterStatus, sortBy }) {
   const { mutate: duplicateCabin } = useMutation({
     mutationFn: createCabin,
     onSuccess: () => {
-      toast.success("Cabin duplicated successfully");
+      // toast.success("Cabin duplicated successfully");
       queryClient.invalidateQueries({ queryKey: ["cabins", filterStatus] });
     },
     onError: (error) => toast.error("Failed to duplicate: " + error.message),
