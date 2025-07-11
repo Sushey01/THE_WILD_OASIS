@@ -124,12 +124,19 @@ export async function deleteCabin(id) {
 
 
 
-export async function getCabins(filters = {}) {
-  let query = supabase.from('cabins').select("*");
+export async function getCabins({ filter, sortBy }) {
+  let query = supabase.from("cabins").select("*");
 
-  if (filters.status) query = query.eq('status', filters.status);
-  if (filters.search) query = query.ilike('name', `%${filters.search}%`);
-  if (filters.minPrice) query = query.gte('price', filters.minPrice);
+  /* FILTER */
+  if (filter) {
+    if (filter.field === "status" && filter.value === "with-discount")
+      query = query.gt("discount", 0);
+    if (filter.field === "status" && filter.value === "no-discount")
+      query = query.lte("discount", 0);
+  }
+
+  /* SORT  (direction = "asc" | "desc") */
+  if (sortBy) query = query.order(sortBy.field, { ascending: sortBy.direction === "asc" });
 
   const { data, error } = await query;
   if (error) throw error;
