@@ -4,7 +4,7 @@
   margin: 0;
   padding: 0;
   /* position: relative; */
-  overflow: visible; /* keep horizontal scroll if needed on small screens */
+  overflow: visible; 
 }
 
 .table {

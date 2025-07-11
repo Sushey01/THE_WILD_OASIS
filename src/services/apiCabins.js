@@ -1,16 +1,16 @@
 import supabase, { supabaseUrl } from "./supabase";
 
-// ✅ GET CABINS
-export async function getCabins() {
-  let { data: cabins, error } = await supabase.from("cabins").select("*");
+// // ✅ GET CABINS
+// export async function getCabins() {
+//   let { data: cabins, error } = await supabase.from("cabins").select("*");
 
-  if (error) {
-    console.error(error);
-    throw new Error("Cabins could not be loaded");
-  }
+//   if (error) {
+//     console.error(error);
+//     throw new Error("Cabins could not be loaded");
+//   }
 
-  return cabins;
-}
+//   return cabins;
+// }
 
 // ✅ CREATE CABIN
 export async function createCabin(newCabin) {
@@ -119,5 +119,19 @@ export async function deleteCabin(id) {
     throw new Error("No cabin was deleted — check if ID is correct or permissions");
   }
 
+  return data;
+}
+
+
+
+export async function getCabins(filters = {}) {
+  let query = supabase.from('cabins').select("*");
+
+  if (filters.status) query = query.eq('status', filters.status);
+  if (filters.search) query = query.ilike('name', `%${filters.search}%`);
+  if (filters.minPrice) query = query.gte('price', filters.minPrice);
+
+  const { data, error } = await query;
+  if (error) throw error;
   return data;
 }
