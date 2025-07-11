@@ -1,14 +1,34 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./CheckinBooking.module.css";
 import BookingDetailsTable from "./BookingDetailsTable";
 import { useLocation, useNavigate } from "react-router-dom";
+import { checkInBooking } from "../services/apiBoookings";
+
+
+
+
 
 const  CheckinBooking = () => {
   const { state } = useLocation();
   const navigate = useNavigate();
   const booking = state?.booking;
 
+  const [isCheckingIn, setIsCheckingIn] = useState(false)
   if (!booking) return <p>No booking selected.</p>;
+
+async function handleCheckIn() {
+    try {
+      setIsCheckingIn(true);
+      await checkInBooking(booking.id);  // 👈 call service
+      toast.success(`Booking #${booking.id} checked in`);
+      navigate("/bookings");             // ✅ go back or to a list page
+    } catch (err) {
+      toast.error("Check-in failed: " + err.message);
+    } finally {
+      setIsCheckingIn(false);
+    }
+  }
+
 
   return (
     <>
@@ -30,7 +50,7 @@ const  CheckinBooking = () => {
         </div>
 
         <div className={styles.buttons}>
-          <button className={styles.checkbutton}>Check in booking #{booking.id}</button>
+          <button className={styles.checkbutton} type="button" onClick={handleCheckIn} disabled={isCheckingIn}>{isCheckingIn? "Checking in...":`Check in booking #${booking.id}`}</button>
           <button className={styles.back} onClick={() => navigate(-1)}>Back</button>
         </div>
       </div>
