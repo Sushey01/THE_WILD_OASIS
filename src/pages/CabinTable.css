@@ -43,6 +43,7 @@
     justify-items: center;
     grid-template-columns: repeat(7, 1fr);
     align-items: center;
+    font-size: 14px;
     padding-top: 5px;
     padding-bottom: 5px;
     border-bottom: 1px solid #363d46;

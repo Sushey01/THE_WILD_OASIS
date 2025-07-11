@@ -56,7 +56,7 @@ export default function Layout() {
             <div
               className="user-section"
               style={{
-                width: "80%",
+                width: "100%",
                 display: "flex",
                 alignItems: "center",
                 padding: "10px",
