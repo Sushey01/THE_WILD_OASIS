@@ -95,4 +95,28 @@ export async function getBookingsAfterDate(date) {
   return data;
 }
 
+export async function checkInBooking(id) {
+  const { data, error } = await supabase             // 1  connect to Supabase
+    .from("bookings")                                // 2  choose table
+    .update({ status: "checked_in" })                // 3  set column value
+    .eq("id", id)                                    // 4  pick the row
+    .single();                                       // 5  return one row
+
+  if (error) throw new Error(error.message);         // 6  surface any error
+  return data;                                       // 7  updated row
+}
+
+export async function deleteBooking(id) {
+  const { error } = await supabase
+    .from("bookings")
+    .delete()
+    .eq("id", id);
+
+  if (error) {
+    console.error(error);
+    throw new Error("Booking could not be deleted");
+  }
+
+  return true;
+}
 

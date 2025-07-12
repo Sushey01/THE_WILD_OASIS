@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./Bookings.module.css";
 import BookingTable from "./BookingTable";
 import useBookings from "../bookings/useBookings";
@@ -28,6 +28,7 @@ const Bookings = () => {
     setSearchParams(newParams);
   };
 
+  
   const { bookings, isLoading, error } = useBookings();
 
   return (
