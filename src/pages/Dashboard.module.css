@@ -82,6 +82,7 @@
     background-color: #075895;
     border-radius: 60px;
     padding: 15px;
+
 }
 
 .content{
@@ -211,6 +212,51 @@
 
 
 
+.bookingSvg,
+.saleSvg,
+.checkSvg,
+.occupancySvg {
+  border-radius: 60px;
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
+.bookingSvg {
+  background-color: #075895;
+}
 
+.saleSvg {
+  background-color: #166534;
+}
+
+.checkSvg {
+  background-color: #3730A3;
+}
+
+.occupancySvg {
+  background-color: #854D0E;
+}
+
+/* Make SVG stroke color white */
+.bookingSvg svg,
+.saleSvg svg,
+.checkSvg svg,
+.occupancySvg svg {
+  color: white;
+  display: block;
+}
+
+.bookingSvg, .checkSvg, .occupancySvg, .saleSvg {
+  width: 64px;         /* fixed width */
+  height: 64px;        /* fixed height, equal to width */
+  background-color: #075895;
+  border-radius: 50%;  /* makes circle */
+  padding: 15px;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 

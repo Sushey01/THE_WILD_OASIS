@@ -2,11 +2,12 @@ import React, { useState } from "react";
 import styles from "./BookingTable.module.css";
 import { useNavigate } from "react-router-dom";
 import { deleteBooking } from "../services/apiBoookings";
+import useDeleteBooking from "./useDeleteBooking"
 import { deleteCabin } from "../services/apiCabins";
 // import useBookings from "./useBookings";
 
 const BookingTable = ({ bookings, isLoading, error }) => {
-  // const { bookings, isLoading, error } = useBookings();
+ const { mutate: deleteBooking, isPending } = useDeleteBooking();
   const [openMenuId, setOpenMenuId] = useState(null);
 
   const toggleMenu = (id) => {
@@ -157,26 +158,17 @@ const BookingTable = ({ bookings, isLoading, error }) => {
                               Check in
                             </button>
                           )}
-
-                         <button
+<button
   className={styles.dropdownItem}
-  onClick={async () => {
-  const confirm = window.confirm("Are you sure you want to delete this booking?");
-  if (!confirm) return;
-
-  try {
-    await deleteBooking(id);
-    alert("Booking deleted!");
-
-    // ✅ Immediately remove it from UI
-    setBookings((prev) => prev.filter((b) => b.id !== id));
-  } catch (err) {
-    alert("Failed to delete booking.");
-    console.error(err);
-  }
-}}
-
+  onClick={() => {
+    if (!window.confirm("Are you sure you want to delete this booking?")) return;
+    deleteBooking(id, {
+      onSuccess: () => alert("Booking deleted!"),
+      onError: () => alert("Failed to delete booking."),
+    });
+  }}
 >
+  {/* ✅ This is the trash icon */}
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="24"
@@ -197,6 +189,7 @@ const BookingTable = ({ bookings, isLoading, error }) => {
   </svg>
   Delete booking
 </button>
+
 
                         </div>
                       )}
