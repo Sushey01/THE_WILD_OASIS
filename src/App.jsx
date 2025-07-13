@@ -15,6 +15,7 @@ import BookingDetails from "./bookings/BookingDetails";
 import CabinTable from "./pages/CabinTable";
 import CheckinBooking from "./bookings/CheckinBooking";
 import Layout from "./Layout";
+import { AuthProvider } from "./context/AuthContext.jsx";
 import Login from "./pages/LoginForm"
 
 
@@ -37,6 +38,8 @@ const App = () => {
     <BrowserRouter>
       <QueryClientProvider client={queryClient}>
         {/* Wrap everything inside DarkModeProvider */}
+        <AuthProvider>
+
         <DarkModeProvider>
           <div className="main-content" style={{ flex: 1 }}>
            <Routes>
@@ -58,6 +61,7 @@ const App = () => {
 
           </div>
         </DarkModeProvider>
+        </AuthProvider>
 
         <ReactQueryDevtools initialIsOpen={false} />
         <Toaster
