@@ -15,8 +15,7 @@ import BookingDetails from "./bookings/BookingDetails";
 import CabinTable from "./pages/CabinTable";
 import CheckinBooking from "./bookings/CheckinBooking";
 import Layout from "./Layout";
-import Login from "./pages/LoginForm"
-
+import Login from "./pages/LoginForm";
 
 // Import your DarkModeProvider
 import { DarkModeProvider } from "./context/DarkModeContext";
@@ -39,23 +38,29 @@ const App = () => {
         {/* Wrap everything inside DarkModeProvider */}
         <DarkModeProvider>
           <div className="main-content" style={{ flex: 1 }}>
-           <Routes>
-  <Route path="/" element={<ProtectedRoute><Layout /></ProtectedRoute>}>
-    <Route index element={<Dashboard />} />
-    <Route path="bookings" element={<Bookings />} />
-    <Route path="bookings/:bookingId" element={<Bookings />} />
-    <Route path="cabins" element={<Cabin />} />
-    <Route path="user" element={<UserForm />} />
-    <Route path="settings" element={<Settings />} />
-    <Route path="seedetails/:id" element={<BookingDetails />} />
-    <Route path="checkin" element={<CheckinBooking />} />
-  </Route>
+            <Routes>
+              <Route
+                path="/"
+                element={
+                  <ProtectedRoute>
+                    <Layout />
+                  </ProtectedRoute>
+                }
+              >
+                <Route index element={<Dashboard />} />
+                <Route path="bookings" element={<Bookings />} />
+                <Route path="bookings/:bookingId" element={<Bookings />} />
+                <Route path="cabins" element={<Cabin />} />
+                <Route path="user" element={<UserForm />} />
+                <Route path="settings" element={<Settings />} />
+                <Route path="seedetails/:id" element={<BookingDetails />} />
+                <Route path="checkin" element={<CheckinBooking />} />
+              </Route>
 
-  <Route path="/login" element={<LoginForm />} />
-  <Route path="/cabinform" element={<CabinTable />} />
-  <Route path="*" element={<Dashboard />} />
-</Routes>
-
+              <Route path="/login" element={<LoginForm />} />
+              <Route path="/cabinform" element={<CabinTable />} />
+              <Route path="*" element={<Dashboard />} />
+            </Routes>
           </div>
         </DarkModeProvider>
 
