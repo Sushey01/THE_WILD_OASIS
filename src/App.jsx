@@ -24,6 +24,7 @@ import { DarkModeProvider } from "./context/DarkModeContext";
 import UserForm from "./pages/UserForm";
 import LoginForm from "./pages/LoginForm";
 import ProtectedRoute from "./components/ProtectedRoute";
+import AddCabin from "./cabins/AddCabin.jsx";
 
 const queryClient = new QueryClient({
   defaultOptions: {

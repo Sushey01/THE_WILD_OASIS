@@ -1,0 +1,126 @@
+
+
+.cross-button{
+    background-color: #18212f;
+    color: #9ca3af;
+}
+
+
+
+.cross-button:hover{
+    cursor: pointer;
+    color: #9ca3af;
+    border: 1px solid #4b5563;
+    border-radius: 5px;
+    box-sizing: border-box;
+    display: block;
+}
+
+.cabin-form{
+    padding: 10px;
+    width: 60%;
+    border: 1px solid #18212f;
+    background-color: #18212f;
+    margin-top: 30px;
+    margin-left: 200px;
+    color: #e5e7eb;
+    height: 100vh;
+    border-radius: 10px;
+}
+
+.cabinInput{
+    border: 1px solid #18212f;
+    display: grid;
+  font-weight: 550;
+  -webkit-box-align: center;
+  grid-template-columns: 200px 1fr 1fr;
+  align-items: center;
+  gap: 20px;
+  font-size: 15px;
+  border-inline-end: #18212f;
+  border-bottom: 1px solid #1f2937;
+}
+
+
+
+.InputBox{
+    border: 1px solid #4b5563;
+    background-color: #18212f;
+    padding: 10px;
+    border-radius: 7px;
+}
+
+.InputBox1{
+    border: 1px solid #4b5563;
+    background-color: #18212f;
+    padding: 30px;
+    border-radius: 7px;
+}
+
+.cabinButtons{
+    display: flex;
+    padding: 20px;
+    font-size: 15px;
+    font-weight: 550;
+    align-items: center;
+}
+
+
+.primary-buttons{
+    display: flex;
+    margin-left: 125px;
+    gap: 10px;
+}
+
+.choose-button{
+    color: white;
+    padding: 8px;
+    border: 1px solid #4f46e5;
+    font-weight: 550;
+    background-color: #4f46e5;
+    border-radius: 5px;
+}
+
+.choose-button:hover{
+    cursor: pointer;
+    background-color: #3730a3;
+}
+
+
+.file-button{
+    background-color: #18212f;
+    color: #e5e7eb;
+}
+
+
+
+.main-buttons{
+    display: flex;
+    gap: 10px;
+    margin-right: 30px;
+}
+
+.cancel-button{
+    border: 1px solid #374151;
+    padding: 10px;
+    border-radius: 5px;
+    color: #e5e7eb;
+    background-color: #18212f;
+    font-weight: 550;
+    font-family: Poppins, sans-serif;
+}
+
+.cancel-button:hover{
+    cursor: pointer;
+    background-color: #111827;
+}
+
+
+.create-button{
+    color: #e5e7eb;
+    background-color: #4f46e5;
+    border: 1px solid #4f46e5;
+    border-radius: 5px;
+    padding: 13px;
+    font-weight: 550;
+}

@@ -1,10 +1,10 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useForm } from "react-hook-form";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { toast } from "react-hot-toast";
 import { createEditCabin } from "../services/apiCabins";
+import styles from "./CabinForm.module.css";
 
-// MAIN COMPONENT
 function CabinForm({ cabinToEdit = {}, onClose }) {
   const { id: editId, ...editValues } = cabinToEdit;
   const isEditSession = Boolean(editId);
@@ -26,12 +26,6 @@ function CabinForm({ cabinToEdit = {}, onClose }) {
     },
   });
 
-  // useEffect(() => {
-  //   if (isEditSession) {
-  //     reset({ ...editValues, image: "" }); // do not preload image
-  //   }
-  // }, [editValues, isEditSession, reset]);
-
   const queryClient = useQueryClient();
 
   const { mutate, isLoading } = useMutation({
@@ -40,17 +34,14 @@ function CabinForm({ cabinToEdit = {}, onClose }) {
       toast.success(`Cabin ${isEditSession ? "updated" : "created"} successfully`);
       queryClient.invalidateQueries({ queryKey: ["cabins"] });
       reset();
-      if (onClose) onClose(); // optional: close modal or form
+      if (onClose) onClose();
     },
     onError: (err) => toast.error(err.message),
   });
 
   function onSubmit(data) {
     const image = typeof data.image === "string" ? data.image : data.image[0];
-
-    // Form data to send
     const formData = { ...data, image };
-
     mutate({ data: formData, id: editId });
   }
 
@@ -60,7 +51,7 @@ function CabinForm({ cabinToEdit = {}, onClose }) {
   }
 
   return (
-    <form onSubmit={handleSubmit(onSubmit, onError)} style={formStyle}>
+    <form onSubmit={handleSubmit(onSubmit, onError)} className={styles.formContainer}>
       <h3>{isEditSession ? "Edit Cabin" : "Add New Cabin"}</h3>
 
       <input
@@ -68,7 +59,7 @@ function CabinForm({ cabinToEdit = {}, onClose }) {
         placeholder="Cabin name"
         {...register("name", { required: "Cabin name is required" })}
       />
-      {errors.name && <p style={errorStyle}>{errors.name.message}</p>}
+      {errors.name && <p className={styles.errorMessage}>{errors.name.message}</p>}
 
       <input
         type="number"
@@ -78,7 +69,7 @@ function CabinForm({ cabinToEdit = {}, onClose }) {
           min: { value: 1, message: "At least 1 guest" },
         })}
       />
-      {errors.maxCapacity && <p style={errorStyle}>{errors.maxCapacity.message}</p>}
+      {errors.maxCapacity && <p className={styles.errorMessage}>{errors.maxCapacity.message}</p>}
 
       <input
         type="number"
@@ -88,7 +79,7 @@ function CabinForm({ cabinToEdit = {}, onClose }) {
           min: { value: 1, message: "Price must be at least 1" },
         })}
       />
-      {errors.regularPrice && <p style={errorStyle}>{errors.regularPrice.message}</p>}
+      {errors.regularPrice && <p className={styles.errorMessage}>{errors.regularPrice.message}</p>}
 
       <input
         type="number"
@@ -96,17 +87,16 @@ function CabinForm({ cabinToEdit = {}, onClose }) {
         {...register("discount", {
           required: "Discount is required",
           validate: (value) =>
-            value <= getValues("regularPrice") ||
-            "Discount should be less than price",
+            value <= getValues("regularPrice") || "Discount should be less than price",
         })}
       />
-      {errors.discount && <p style={errorStyle}>{errors.discount.message}</p>}
+      {errors.discount && <p className={styles.errorMessage}>{errors.discount.message}</p>}
 
       <textarea
-        placeholder="Description" 
+        placeholder="Description"
         {...register("description", { required: "Description is required" })}
       />
-      {errors.description && <p style={errorStyle}>{errors.description.message}</p>}
+      {errors.description && <p className={styles.errorMessage}>{errors.description.message}</p>}
 
       <input
         type="file"
@@ -115,7 +105,7 @@ function CabinForm({ cabinToEdit = {}, onClose }) {
           required: !isEditSession ? "Image is required" : false,
         })}
       />
-      {errors.image && <p style={errorStyle}>{errors.image.message}</p>}
+      {errors.image && <p className={styles.errorMessage}>{errors.image.message}</p>}
 
       <div>
         <button type="reset" disabled={isLoading}>Cancel</button>
@@ -126,18 +116,5 @@ function CabinForm({ cabinToEdit = {}, onClose }) {
     </form>
   );
 }
-
-const formStyle = {
-  display: "flex",
-  flexDirection: "column",
-  gap: "1rem",
-  marginBottom: "2rem",
-  maxWidth: "400px",
-};
-
-const errorStyle = {
-  color: "red",
-  fontSize: "0.85rem",
-};
 
 export default CabinForm;

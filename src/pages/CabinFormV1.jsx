@@ -1,144 +1,179 @@
-// import { useMutation, useQueryClient } from "@tanstack/react-query";
-// import { toast } from "react-hot-toast";
 // import React from "react";
 // import { useForm } from "react-hook-form";
-// import { createCabin } from "../services/apiCabins";
+// import { useMutation, useQueryClient } from "@tanstack/react-query";
+// import { toast } from "react-hot-toast";
 // import { createEditCabin } from "../services/apiCabins";
+// import "../cabins/AddCabin.css"
 
-
-// function CabinFormV1({cabinToEdit}) {
-
-//     const {id:editId, ...editValues} =cabinToEdit;
-
-//     const isEditSession = Boolean(editId)
+// export default function CabinForm({ cabinToEdit = {}, onClose }) {
+//   const { id: editId, ...editValues } = cabinToEdit;
+//   const isEditSession = Boolean(editId);
 
 //   const {
 //     register,
 //     handleSubmit,
 //     reset,
 //     getValues,
-//     formState: { errors },
+//     formState: { errors, isSubmitting },
 //   } = useForm({
-//     defaultValues: isEditSession ? editValues : {}
+//     defaultValues: {
+//       cabinname: "",
+//       capacity: "",
+//       price: "",
+//       discount: 0,
+//       website: "",
+//       ...editValues,
+//     },
 //   });
 
 //   const queryClient = useQueryClient();
-//   const { mutate, isLoading } = useMutation({
-//     mutationFn: createEditCabin,
+
+//   const { mutate } = useMutation({
+//     mutationFn: ({ data, id }) => createEditCabin(data, id),
 //     onSuccess: () => {
-//       toast.success("New Cabin successfully created");
+//       toast.success(`Cabin ${isEditSession ? "updated" : "created"} successfully`);
 //       queryClient.invalidateQueries({ queryKey: ["cabins"] });
 //       reset();
+//       if (onClose) onClose();
 //     },
 //     onError: (err) => toast.error(err.message),
 //   });
 
-//   const onSubmit = (data) => {
-//     const newData = {...data,image: data.image[0]}
-//     mutate(...newData,editId );
-//   };
+//   function onSubmit(data) {
+//     const image = typeof data.image === "string" ? data.image : data.image?.[0];
+//     const formData = { ...data, image };
+//     mutate({ data: formData, id: editId });
+//   }
 
-//   const onError = (errors) => {
-//     toast.error("Please fix the validation errors.");
-//     console.log(errors);
-//   };
+//   function onError() {
+//     toast.error("Please fix the errors in the form.");
+//   }
 
 //   return (
-//     <form onSubmit={handleSubmit(onSubmit, onError)} style={formStyle}>
-//       <h3>Add New Cabin</h3>
+//     <div className="cabin-container">
+//       <form className="cabin-form" onSubmit={handleSubmit(onSubmit, onError)}>
+//         <button
+//           type="button"
+//           className="cross-button"
+//           onClick={() => onClose && onClose()}
+//           aria-label="Close form"
+//         >
+//           <svg
+//             xmlns="http://www.w3.org/2000/svg"
+//             width="24"
+//             height="24"
+//             viewBox="0 0 24 24"
+//             fill="none"
+//             stroke="currentColor"
+//             strokeWidth="2"
+//             strokeLinecap="round"
+//             strokeLinejoin="round"
+//             className="lucide lucide-x-icon lucide-x"
+//           >
+//             <path d="M18 6 6 18" />
+//             <path d="m6 6 12 12" />
+//           </svg>
+//         </button>
 
-//       <input
-//         type="text"
-//         placeholder="Cabin name"
-//         {...register("name", { required: "Cabin name is required" })} //register: Connects input fields to the form state
-//       />
-//       {errors?.name?.message && <Error>{errors.name.message}</Error>}
+//         <div className="cabinInput">
+//           <label>Cabin name</label>
+//           <input
+//             className="InputBox"
+//             type="text"
+//             {...register("cabinname", { required: "Cabin name is required" })}
+//           />
+//         </div>
+//         {errors.cabinname && <p style={{ color: "red" }}>{errors.cabinname.message}</p>}
 
-//       <input
-//         type="number"
-//         placeholder="Max Capacity"
-//         required="this field is required"
-//         {...register("maxCapacity", {
-//           required: "Max capacity is required",
-//           min: { value: 1, message: "Must be at least 1" },
-//         })}
-//       />
-//       {errors.maxCapacity && (
-//         <small style={errorStyle}>{errors.maxCapacity.message}</small>
-//       )}
+//         <div className="cabinInput">
+//           <label>Maximum capacity</label>
+//           <input
+//             className="InputBox"
+//             type="number"
+//             {...register("capacity", {
+//               required: "Capacity is required",
+//               min: { value: 1, message: "Minimum capacity is 1" },
+//             })}
+//           />
+//         </div>
+//         {errors.capacity && <p style={{ color: "red" }}>{errors.capacity.message}</p>}
 
-//       <input
-//         type="number"
-//         placeholder="Price"
-//         {...register("regularPrice", {
-//           required: "Price is required",
-//           min: { value: 1, message: "Price must be at least 1" },
-//         })}
-//       />
-//       {errors.regularPrice && (
-//         <small style={errorStyle}>{errors.regularPrice.message}</small>
-//       )}
+//         <div className="cabinInput">
+//           <label>Regular price</label>
+//           <input
+//             className="InputBox"
+//             type="number"
+//             {...register("price", {
+//               required: "Price is required",
+//               min: { value: 1, message: "Price must be at least 1" },
+//             })}
+//           />
+//         </div>
+//         {errors.price && <p style={{ color: "red" }}>{errors.price.message}</p>}
 
-//       <input
-//         type="number"
-//         placeholder="Discount"
-//         {...register("discount", {
-//           required: "Discount is required",
-//           validate: (value) =>
-//             value <= getValues("regularPrice") ||
-//             "Discount should be less than regular price",
-//         })}
-//       />
+//         <div className="cabinInput">
+//           <label>Discount</label>
+//           <input
+//             className="InputBox"
+//             type="number"
+//             {...register("discount", {
+//               required: "Discount is required",
+//               validate: (value) =>
+//                 value <= getValues("price") || "Discount must be less than or equal to price",
+//             })}
+//           />
+//         </div>
+//         {errors.discount && <p style={{ color: "red" }}>{errors.discount.message}</p>}
 
-//       {errors.discount && (
-//         <small style={errorStyle}>{errors.discount.message}</small>
-//       )}
+//         <div className="cabinInput">
+//           <label>Description for website</label>
+//           <input
+//             className="InputBox1"
+//             type="text"
+//             {...register("website", { required: "Description is required" })}
+//           />
+//         </div>
+//         {errors.website && <p style={{ color: "red" }}>{errors.website.message}</p>}
 
-//       <textarea
-//         placeholder="Description"
-//         {...register("description", {
-//           required: "Description is required",
-//         })}
-//       />
-//       {errors.description && (
-//         <small style={errorStyle}>{errors.description.message}</small>
-//       )}
+//         <div className="cabinButtons">
+//           <label>Cabin photo</label>
+//           <div className="primary-buttons">
+//             <input
+//               type="file"
+//               accept="image/*"
+//               {...register("image", {
+//                 required: !isEditSession ? "Image is required" : false,
+//               })}
+//               style={{ display: "none" }}
+//               id="cabinImage"
+//             />
+//             <label
+//               htmlFor="cabinImage"
+//               className="choose-button"
+//               style={{ cursor: "pointer" }}
+//             >
+//               Choose File
+//             </label>
+//             <button type="button" className="file-button" disabled>
+//               No file chosen
+//             </button>
+//           </div>
+//         </div>
 
-//       <input
-//         id="Image"
-//         accept="image/*"
-//         type="file"
-//         {...register("image", {
-//           required: isEditSession ? false : "This field is required",
-//         })}
-//       />
-//       {errors.image && <small style={errorStyle}>{errors.image.message}</small>}
-
-//       {/* <button type="submit">Submit</button> */}
-//      <div>
-//   <button type="button" onClick={() => { reset(); onClose?.(); }}>
-//     Cancel
-//   </button>
-// <button type="submit" disabled={isLoading}>
-//   {isEditSession ? "Update Cabin" : "Create Cabin"}
-// </button>
-// </div>
-
-//     </form>
+//         <div className="main-buttons">
+//           <button
+//             type="reset"
+//             className="cancel-button"
+//             disabled={isSubmitting}
+//             onClick={() => reset()}
+//           >
+//             Cancel
+//           </button>
+//           <button type="submit" className="create-button" disabled={isSubmitting}>
+//             {isEditSession ? "Update Cabin" : "Create new cabin"}
+//           </button>
+//         </div>
+//       </form>
+//     </div>
 //   );
 // }
-
-// const formStyle = {
-//   display: "flex",
-//   flexDirection: "column",
-//   gap: "1rem",
-//   marginBottom: "2rem",
-//   maxWidth: "400px",
-// };
-
-// const errorStyle = {
-//   color: "red",
-//   fontSize: "0.85rem",
-// };
-
-// export default CabinFormV1;
