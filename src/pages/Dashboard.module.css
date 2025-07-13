@@ -248,7 +248,7 @@
   display: block;
 }
 
-.bookingSvg, .checkSvg, .occupancySvg, .saleSvg {
+.bookingSvg{
   width: 64px;         /* fixed width */
   height: 64px;        /* fixed height, equal to width */
   background-color: #075895;
@@ -260,3 +260,41 @@
   justify-content: center;
 }
 
+.saleSvg{
+  width: 64px;         /* fixed width */
+  height: 64px;        /* fixed height, equal to width */
+  background-color: #166534;
+  border-radius: 50%;  /* makes circle */
+  padding: 15px;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+
+.checkSvg{
+  width: 64px;         /* fixed width */
+  height: 64px;        /* fixed height, equal to width */
+  background-color: #4f46e5;
+  border-radius: 50%;  /* makes circle */
+  padding: 15px;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.occupancySvg{
+  width: 64px;         /* fixed width */
+  height: 64px;        /* fixed height, equal to width */
+  background-color: #854D0E;
+  border-radius: 50%;  /* makes circle */
+  padding: 15px;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
