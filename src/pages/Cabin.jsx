@@ -4,7 +4,7 @@ import styles from "./Cabin.module.css";
 import { getCabins } from "../services/apiCabins";
 
 export default function Cabin() {
-  // const [cabins, setCabins] = useState([]);
+  const [cabins, setCabins] = useState([]);
   const [filterStatus, setFilterStatus] = useState(null); // null means "All"
   const [sortBy, setSortBy] = useState("name_asc");
 

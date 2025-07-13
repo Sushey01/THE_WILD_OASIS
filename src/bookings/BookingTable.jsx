@@ -2,12 +2,12 @@ import React, { useState } from "react";
 import styles from "./BookingTable.module.css";
 import { useNavigate } from "react-router-dom";
 import { deleteBooking } from "../services/apiBoookings";
-import useDeleteBooking from "./useDeleteBooking"
+import useDeleteBooking from "./useDeleteBooking";
 import { deleteCabin } from "../services/apiCabins";
 // import useBookings from "./useBookings";
 
 const BookingTable = ({ bookings, isLoading, error }) => {
- const { mutate: deleteBooking, isPending } = useDeleteBooking();
+  const { mutate: deleteBooking, isPending } = useDeleteBooking();
   const [openMenuId, setOpenMenuId] = useState(null);
 
   const toggleMenu = (id) => {
@@ -52,7 +52,7 @@ const BookingTable = ({ bookings, isLoading, error }) => {
               totalPrice,
               status,
               guests: { fullName, email },
-              cabins: { id:cabinId, name: cabinName },
+              cabins: { id: cabinId, name: cabinName },
             } = booking;
 
             return (
@@ -158,39 +158,43 @@ const BookingTable = ({ bookings, isLoading, error }) => {
                               Check in
                             </button>
                           )}
-<button
-  className={styles.dropdownItem}
-  onClick={() => {
-    if (!window.confirm("Are you sure you want to delete this booking?")) return;
-    deleteBooking(id, {
-      onSuccess: () => alert("Booking deleted!"),
-      onError: () => alert("Failed to delete booking."),
-    });
-  }}
->
-  {/* ✅ This is the trash icon */}
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width="24"
-    height="24"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    className="lucide lucide-trash2-icon lucide-trash-2"
-  >
-    <path d="M3 6h18" />
-    <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6" />
-    <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2" />
-    <line x1="10" x2="10" y1="11" y2="17" />
-    <line x1="14" x2="14" y1="11" y2="17" />
-  </svg>
-  Delete booking
-</button>
-
-
+                          <button
+                            className={styles.dropdownItem}
+                            onClick={() => {
+                              if (
+                                !window.confirm(
+                                  "Are you sure you want to delete this booking?"
+                                )
+                              )
+                                return;
+                              deleteBooking(id, {
+                                onSuccess: () => alert("Booking deleted!"),
+                                onError: () =>
+                                  alert("Failed to delete booking."),
+                              });
+                            }}
+                          >
+                            {/* ✅ This is the trash icon */}
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              width="24"
+                              height="24"
+                              viewBox="0 0 24 24"
+                              fill="none"
+                              stroke="currentColor"
+                              strokeWidth="2"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              className="lucide lucide-trash2-icon lucide-trash-2"
+                            >
+                              <path d="M3 6h18" />
+                              <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6" />
+                              <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2" />
+                              <line x1="10" x2="10" y1="11" y2="17" />
+                              <line x1="14" x2="14" y1="11" y2="17" />
+                            </svg>
+                            Delete booking
+                          </button>
                         </div>
                       )}
                     </span>

@@ -26,6 +26,7 @@ export default function Layout() {
 
   return (
     <div style={{ position: "relative" }}>
+      <MainHeading/>
       <div style={{ display: "flex" }}>
         {/* Sidebar */}
         <div style={{ width: "20%", backgroundColor: "#18212f" }}>

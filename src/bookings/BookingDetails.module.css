@@ -19,6 +19,15 @@
 .title{
     display: flex;
     gap: 10px;
+    color: #fff;
+}
+
+
+.button{
+    border-radius: 7px;
+    border: none;
+    background-color: #212121;
+    color: #fff;
 }
 
 

@@ -96,7 +96,7 @@ export async function getBookingsAfterDate(date) {
 export async function checkInBooking(id) {
   const { data, error } = await supabase             // 1  connect to Supabase
     .from("bookings")                                // 2  choose table
-    .update({ status: "checked_in" })                // 3  set column value
+    .update({ status: "checked-in" })                // 3  set column value
     .eq("id", id)                                    // 4  pick the row
     .single();                                       // 5  return one row
 

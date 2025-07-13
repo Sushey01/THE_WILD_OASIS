@@ -10,8 +10,11 @@ export default function MainHeading() {
             display:"flex",
             justifyContent:"center",
             flexDirection:"row",
+            backgroundColor:"#854d0e",
+            fontFamily:"Poppins, sans-serif",
             color:"#e5e7eb",
-            fontSize:"15px",
+            fontSize:"16px",
+            fontWeight:"400",
             gap:"10px",
             padding:"15px",
         }}>👋
