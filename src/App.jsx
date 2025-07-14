@@ -25,6 +25,7 @@ import UserForm from "./pages/UserForm";
 import LoginForm from "./pages/LoginForm";
 import ProtectedRoute from "./components/ProtectedRoute";
 import AddCabin from "./cabins/AddCabin.jsx";
+import Modal from "./pages/Modal.jsx";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -56,6 +57,7 @@ const App = () => {
   </Route>
 
   <Route path="/login" element={<LoginForm />} />
+  <Route path="/modal" element={<Modal />} />
   <Route path="/cabinform" element={<CabinTable />} />
   <Route path="*" element={<Dashboard />} />
 </Routes>

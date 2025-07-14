@@ -25,7 +25,7 @@ export default function Layout() {
   if (isLoading) return null; // Optional: or show loading spinner
 
   return (
-    <div style={{ position: "relative" }}>
+    <div style={{ position: "relative", zIndex:"9" }}>
       <MainHeading/>
       <div style={{ display: "flex" }}>
         {/* Sidebar */}

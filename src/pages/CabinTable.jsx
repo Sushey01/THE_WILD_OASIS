@@ -9,7 +9,10 @@ import { getCabins, deleteCabin, createCabin } from "../services/apiCabins";
 import SimpleDeleteButton from "./SimpleDeleteButton";
 import { toast } from "react-hot-toast";
 import CabinForm from "./CabinForm";
+import Modal from "./Modal"
 import { HiPencil, HiSquare2Stack } from "react-icons/hi2";
+import AddCabin from "../cabins/AddCabin";
+import ModalLayout from "./Modal";
 
 const supabaseUrl =
   "https://wvrlzurpmqwjezgxjvjc.supabase.co/storage/v1/object/public/";
@@ -159,6 +162,8 @@ function CabinTable({ filterStatus, sortBy }) {
   });
 
   function handleDuplicate(cabin) {
+
+   
     const duplicatedCabin = {
       name: `${cabin.name} (Copy)`,
       description: cabin.description,
@@ -181,6 +186,7 @@ function CabinTable({ filterStatus, sortBy }) {
 
   if (isLoading) return <p>Loading cabins...</p>;
   if (error) return <p>Error loading cabins: {error.message}</p>;
+
 
   return (
     <div className="cabin-table">
@@ -238,7 +244,14 @@ function CabinTable({ filterStatus, sortBy }) {
         <button onClick={() => setShowForm((show) => !show)}>
           {showForm ? "Close Form" : "Add New Cabin"}
         </button>
-        {showForm && <CabinForm />}
+        {showForm &&   
+         
+        <ModalLayout>
+           <CabinForm />
+        </ModalLayout>
+        }
+   
+      
       </div>
     </div>
   );
