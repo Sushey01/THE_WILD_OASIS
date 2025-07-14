@@ -1,6 +1,5 @@
 import supabase from "./supabase";
 
-
 const PAGE_SIZE = 10;
 
 export async function getBookings({ filter = null, sortBy = null, page = 1 } = {}) {
@@ -38,7 +37,6 @@ export async function getBookings({ filter = null, sortBy = null, page = 1 } = {
   return { data, count };
 }
 
-
 export async function getBooking(id) {
   const { data, error } = await supabase
     .from("bookings")
@@ -70,18 +68,16 @@ export async function getBooking(id) {
   return data;
 }
 
-
-
 export async function getBookingsAfterDate(date) {
   if (!(date instanceof Date)) date = new Date(date);
 
   const startDate = date.toISOString();
-  const endDate   = new Date(new Date().setHours(23, 59, 59, 999)).toISOString();
+  const endDate = new Date(new Date().setHours(23, 59, 59, 999)).toISOString();
 
   const { data, error } = await supabase
     .from("bookings")
-    .select("created_at, startDate, totalPrice, extrasPrice, status")  // ✅ Add fields UI needs
-    .gte("startDate", startDate)   // ✅ Filter by the right column (or created_at if needed)
+    .select("created_at, startDate, totalPrice, extrasPrice, status")
+    .gte("startDate", startDate)
     .lte("startDate", endDate);
 
   if (error) {
@@ -92,16 +88,17 @@ export async function getBookingsAfterDate(date) {
   return data;
 }
 
-
 export async function checkInBooking(id) {
-  const { data, error } = await supabase             // 1  connect to Supabase
-    .from("bookings")                                // 2  choose table
-    .update({ status: "checked-in" })                // 3  set column value
-    .eq("id", id)                                    // 4  pick the row
-    .single();                                       // 5  return one row
+  const { data, error } = await supabase
+    .from("bookings")
+    .update({ status: "checked-in" })
+    .eq("id", id)
+    .maybeSingle(); // <-- Use maybeSingle() to avoid multiple/no rows error
 
-  if (error) throw new Error(error.message);         // 6  surface any error
-  return data;                                       // 7  updated row
+  if (error) throw new Error(error.message);
+  if (!data) throw new Error("No booking found with that ID");
+
+  return data;
 }
 
 export async function deleteBooking(id) {
@@ -117,4 +114,3 @@ export async function deleteBooking(id) {
 
   return true;
 }
-
