@@ -247,7 +247,7 @@ function CabinTable({ filterStatus, sortBy }) {
         {showForm &&   
          
         <ModalLayout>
-           <CabinForm />
+           <CabinForm onClose={()=>setShowForm(false)} />
         </ModalLayout>
         }
    

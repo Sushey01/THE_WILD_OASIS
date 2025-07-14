@@ -1,6 +1,5 @@
 import React from 'react'
-import Modal from '../pages/Modal'
-import ModalLayout from '../pages/Modal'
+import ModalLayout from "../pages/Modal"
 
 const AddCabin = () => {
   return (

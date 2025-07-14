@@ -14,3 +14,4 @@ const ModalLayout = ({ children, onClose }) => {
   );
 };
 
+export default ModalLayout;
